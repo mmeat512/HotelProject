@@ -1,0 +1,155 @@
+      /*로그인페이지*/
+        .login-t {
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+
+        .login-t h2 {
+            margin: 0 auto;
+            text-align: center;
+            width: 300px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d0baa8;
+        }
+
+        .login-out {
+            margin-top: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 100px;
+            float: none;
+        }
+
+        .login-out .login-title {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .login-inner {
+            margin: 50px auto;
+            padding: 60px 70px;
+            width: 70%;
+            background-color: #d0baa894;
+            box-shadow: 0px 8px 16px rgb(0, 0, 0, 0.1);
+
+        }
+
+        .inner {
+            overflow: hidden;
+        }
+
+        .inner .inner-input {
+            width: 80%;
+            float: left;
+        }
+
+        .inner .inner-btn1 {
+            width: 20%;
+            float: right;
+        }
+
+        .inner .inner-input>input {
+            display: block;
+            margin-bottom: 15px;
+            width: 90%;
+            padding: 5px 5px;
+        }
+
+        .inner .inner-btn1 button {
+            background-color: #d0baa8;
+            color: white;
+            width: 100%;
+            padding: 31% 0;
+        }
+
+        .inner .inner-btn1 button:focus,
+        .inner-btn2 button:focus {
+            outline: none;
+        }
+
+        .login-inner .inner-btn2 {
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .login-inner .inner-btn2 .btn1 {
+            width: 32%;
+            float: left;
+            margin-right: 2%;
+            background-color: #d0baa8;
+            color: white;
+            padding: 3px 0;
+        }
+
+        .login-inner .inner-btn2 .btn2 {
+            width: 32%;
+            float: left;
+            margin-right: 2%;
+            background-color: #d0baa8;
+            color: white;
+            padding: 3px 0;
+        }
+
+        .login-inner .inner-btn2 .btn3 {
+            width: 32%;
+            float: left;
+            background-color: #d0baa8;
+            color: white;
+            padding: 3px 0;
+        }
+
+        .modal-content {
+            border: 5px solid #d0baa8;
+        }
+
+        .modal-content .modal-top {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .modal-content .modal-mid {
+            padding: 15px;
+        }
+
+        .modal-content .modal-bot {
+            padding: 15px;
+        }
+
+        .table-bordered {
+            border: none;
+        }
+
+        .table-bordered>thead>tr>th,
+        .table-bordered>tbody>tr>th,
+        .table-bordered>tfoot>tr>th,
+        .table-bordered>thead>tr>td,
+        .table-bordered>tbody>tr>td,
+        .table-bordered>tfoot>tr>td {
+            border: none;
+        }
+
+        .modal-mid .table input {
+            border: 1px solid #ddd;
+            width: 53%
+        }
+
+        .modal-mid .table .td {
+            padding-left: 25%;
+            width: 3%;
+        }
+
+        .modal-mid .table .td2 {
+            width: 5%
+        }
+
+        .modal-mid .table .td2 .td3 {
+            width: 15%;
+        }
+
+        .modal-bot {
+            width: 24%;
+            margin: 0 auto;
+        }

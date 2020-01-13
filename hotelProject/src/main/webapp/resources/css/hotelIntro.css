@@ -1,0 +1,268 @@
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        li {
+            text-align: -webkit-match-parent;
+        }
+
+        .itemList {
+            margin-top: 80px;
+            padding-bottom: 200px;
+            width: 100%;
+            border-top: 1px solid #ddd;
+        }
+
+        .itemList item {
+            border-bottom: solid 1px #ddd;
+            display: table;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+
+
+        .itemList .itemImg {
+            display: table-cell;
+            width: 100%;
+            vertical-align: top;
+
+
+        }
+
+        .itemList .itemInfo {
+            display: table-cell;
+            width: auto;
+            vertical-align: middle;
+            padding: 30px 0px 30px 0px;
+            position: relative;
+            border-bottom: 1px solid #ddd;
+            padding-right: 12%;
+            padding-left: 2%;
+        }
+
+
+        .itemList .itemOpt {
+            display: table-cell;
+            vertical-align: middle;
+            width: 208px;
+            text-align: center;
+            background: #f8f8f8;
+            white-space: nowrap;
+        }
+
+        .itemInfoList {
+            padding-left: 0;
+            padding-top: 40px;
+            float: left;
+        }
+
+        .sizeHi img {
+            width: 120%
+        }
+
+        .menu-list {
+            width: 100%;
+            background-color: #0e2f56;
+            color: white;
+
+        }
+
+        .menu {
+            border-top: 1px solid white;
+        }
+
+        .item {
+            padding-top: 30px;
+            padding-left: 10%;
+        }
+
+        .intro-btn {
+            width: 100%;
+            background-color: #0e2f56;
+            border: 0;
+            text-align: left;
+            font-size: 80%;
+        }
+
+        .menu-Tit {
+            padding: 6px 12px;
+            font-size: 150%;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .menu-list {
+            width: 100%;
+
+        }
+
+        .section-inner {
+            margin-top: 150px;
+        }
+
+        .roomList {
+            margin-top: 0px;
+        }
+
+        .room-tog>li {
+            background-color: #d0baa8;
+            padding: 0;
+            font-weight: bold
+        }
+
+        .room-tog {
+            border-bottom: 0;
+            margin: 0 auto;
+            width: 75%;
+        }
+
+        .room-tog>li>a {
+            color: white;
+            margin: 0 auto;
+            width: 100%;
+            padding-left: 7px;
+            padding-right: 7px;
+            text-align: center;
+        }
+
+        .room-tit {
+            font-size: 300%;
+            text-align: center;
+            padding-bottom: 50px;
+            padding-top: 100px;
+        }
+
+        .fade>h3 {
+            padding-top: 30px;
+            padding-bottom: 20px;
+            text-align: center;
+            font-size: 230%;
+        }
+
+        .nav-tabs>li>a {
+            margin: 0;
+
+        }
+
+        .tab-content {
+            margin-top: 30px;
+        }
+
+        .itemInfo {
+            width: 30%;
+  
+        }
+        
+        .itemDes{
+            font-size: 120%;
+            padding-top: 2%;
+            padding-bottom: 7%;
+        }
+        /*호텔룸 info 개요*/
+        .s001-content{
+        	overflow:hidden;
+        }
+
+        @media (min-width: 768px) .s011-information__inner {
+            padding: 60px 0;
+        }
+
+        @media (min-width: 768px) .s011-information__title {
+            font-size: 28px;
+            float: left;
+            width: 25%;
+            padding: 0 20px 0 20px;
+        }
+
+        .s011-information__title {
+            font-size: 19px;
+            padding: 0 10px 20px;
+            font-family: "Open Sans Bold", Noto-lang-Bold, "Malgun Gothic", sans-serif;
+        }
+
+        .s011-information__inner {
+            padding: 30px 3px;
+            
+            border-width: 1px 0 0 0;
+            border-color: #d6d6d6;
+            overflow: hidden;
+            display: inline;
+            
+        }
+
+        .s001-information__inner>h3 {
+            float: left;
+
+            display: block;
+            font-size: 1.5em;
+            padding-right: 25%;
+            font-weight: bold;
+            padding-top: 1%;
+        }
+
+        @media (min-width: 768px) .s011-content__col {
+            float: left;
+            width: 33.33%;
+            padding-bottom: 25px;
+        }
+
+        @media (min-width: 768px) .s011-content {
+            float: left;
+            width: 75%;
+            font-size: 18px;
+            padding: 0;
+        }
+
+        @media (min-width: 768px) .s011-content__text,
+        .s011-content__title {
+            padding: 0 10px 0 0;
+            float: left;
+            width: 50%;
+        }
+
+        .text--dotline {
+            overflow: hidden;
+        }
+
+        .s011-content {
+            overflow: hidden;
+            display: inline;
+            font-size: 13px;
+            padding-bottom: 5px;
+            float: left;
+        }
+
+        .s001-content>ul {
+            float: left;
+        }
+
+        .s001-content__col {
+            border-left: 1px solid #ddd;
+            padding: 2%;
+        }
+
+        .s001-content__item {
+            overflow: hidden;
+        }
+
+        .s001-content__item>div {
+                        font-family: "Open Sans Bold", Noto-lang-Bold, "Malgun Gothic", sans-serif;
+            float: left;
+            padding-left: 5px;
+        }
+        .s001-content__title , .s001-content__text{
+            font-size: 105%;
+        }
+        
+        .s001-information__inner{
+            border-top: 1px solid #ddd;
+            padding-top: 1%;
+            margin-bottom: 1%;
+        }
+        
+        
+ 

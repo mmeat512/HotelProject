@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hotel.user.mapper.UserMapper">
+		<!-- 회원가입 -->
+		<insert id="insert">
+			insert into users(userId, userPw, userName, userEngName, userAddrzipNum, userAddrBasic, userAddrDetail, userPhone1, userPhone2, userPhone3, userEmail1, userEmail2, userBirth1, userBirth2, userBirth3)
+				values(#{userId}, #{userPw}, #{userName}, #{userEngName}, #{userAddrzipNum}, #{userAddrBasic}, #{userAddrDetail}, #{userPhone1}, #{userPhone2}, #{userPhone3}, #{userEmail1}, #{userEmail2}, #{userBirth1}, #{userBirth2}, #{userBirth3})
+		</insert>
+		<!-- 아이디찾기 -->
+		<select id="findId" resultType="String">
+			select userId 
+			from users 
+			where userName = #{userName} and userEngName = #{userEngName}
+				  and userPhone1 = #{userPhone1} and userPhone2 = #{userPhone2} and userPhone3 = #{userPhone3}
+		</select>
+		<!-- 비밀번호찾기 -->
+		<select id="findPw" resultType="String">
+			select userPw
+			from users
+			where userName = #{userName} and userEngName = #{userEngName} and userId = #{userId}
+		</select>
+		<!-- 로그인유효성체크 -->
+		<select id="loginCheck" resultType="int">
+			select count(*) from users where userId = #{userId} and userPw = #{userPw}
+		</select>
+		<!-- 마이페이지 정보 -->
+		<select id="myPage" resultType="UserVO">
+			select * from users where userId = #{userId}
+		</select>
+		<!-- 마이페이지 정보수정 -->
+		<update id="userUpdate">
+			update users set userpw = #{userPw}, username = #{userName}, userengname = #{userEngName}, useraddrzipnum = #{userAddrzipNum}, useraddrbasic = #{userAddrBasic},
+							userAddrDetail = #{userAddrDetail}, userPhone1 = #{userPhone1}, userPhone2 = #{userPhone2}, userPhone3 = #{userPhone3}, userEmail1 = #{userEmail1}, userEmail2 = #{userEmail2},
+							userBirth1 = #{userBirth1}, userBirth2 = #{userBirth2}, userBirth3 = #{userBirth3} where userId = #{userId}
+		</update>
+		<!-- 회원탈퇴하기 -->
+		<delete id="userDelete">
+			delete from users where userId = #{userId} and userPw = #{userPw}
+		</delete>
+		<!-- 아이디 중복체크 -->
+		<select id="idCheck" resultType="int">
+			select count(*) from users where userId = #{userId}
+		</select>		
+		
+		<!-- 마이페이지 내 문의 리스트 -->
+		<select id="getMypageQna" resultType="MypageQnaVO">
+			select qnabno, qnatitle, qnatype, qnadate, qnaAnswer from qnaboard 
+			where qnaId = #{qnaId} order by qnabno desc 
+		</select>
+		
+		<!-- 마이페이지 예약현황 리스트 -->
+		<select id="getReserve" resultType="ReserveVO">
+			select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reserve where userid=#{userId}
+			UNION
+			select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reservedelete where userid=#{userId}
+		</select>
+		
+		<!-- 마이페이지 예약 상세보기 모달 -->
+		<select id="userReserveDetail" resultType="ReserveVO">
+select re.*,reserveuser.* from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reserveadult,reservekid,reservebaby,reservestate,reservedate,reserverequire,hotelprice
+            from reserveDelete r
+            where reservenum=#{reserveNum}) re left outer join reserveuser on re.reservenum=reserveuser.reservenum
+            UNION
+         select re.*,reserveUser.* from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reserveadult,reservekid,reservebaby,reservestate,TO_CHAR(reservedate, 'YYYY-MM-DD') as reservedate, reserverequire,hotelprice
+            from reserve r
+            where reservenum=#{reserveNum}) re  LEft outer join reserveuser  on reserveuser.reservenum = re.reservenum
+		</select>
+		
+		<delete id="reserveDelete">
+			delete from reserve where reservenum = #{reserveNum}
+		</delete>
+		
+		<insert id="insertReserveDelete">
+			insert into reserveDelete values (#{roomNum},#{roomType}, #{bedType}, #{reserveDate},#{reserveCheckin},#{reserveCheckout}, #{userId}, #{reserveAdult}, #{reserveKid}, #{reserveBaby}, #{reserveRequire}, #{reserveNum}, #{reserveState},#{hotelPrice})
+		</insert>
+		
+		<!-- 마이페이지 내후기 -->
+		<select id="getMypageReview" resultType="ReviewBoardVO">
+			select * from reviewboard where reviewid=#{reviewId} order by reviewbno desc
+		</select>
+		
+		
+		
+	</mapper>

@@ -1,0 +1,126 @@
+
+         .titlebox{
+             text-align: left;
+             border-bottom: 0px;
+             margin-bottom: 5px;
+         }
+         .table{
+             border-top: 1px solid #d0baa8;
+            border-bottom: 1px solid #d0baa8;
+         }
+         .reviewThead{
+             background-color: #d0baa894;
+            border-bottom: 1px solid #d0baa8;
+         }
+         .searchDiv{
+             overflow: hidden;
+         }
+         .search{
+             float: right;
+         }
+         .searchDiv #sel1{
+             width: 110px;
+             margin-bottom: 10px;
+             border-radius: 0;
+         }
+         .searchDiv #searchName{
+             width: 25%;
+             border: 1px solid #ccc;
+             padding: 6px 0;
+             border-radius: 0;
+         }
+         .pagination{
+             padding:15px;
+             margin: 0 auto;
+             float: none;
+             text-align: center;
+             overflow: hidden;
+             box-sizing: border-box;
+         }
+         .pagination li > a{
+             border-radius: 0;
+             color:#755c31;
+             border-color: #777;
+         }
+         .searchDiv .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+         }
+         .pagination > .active > a{
+             background-color: #d0baa8;
+             border-color: #a08d7d;
+         }
+         .pagination > li:last-child > a,
+         .pagination > li:last-child > span,.pagination > li:first-child > a,
+         .pagination > li:first-child > span,
+         .pagination > li > a{
+             border-color :#a08d7d;
+             border-radius: 0;
+         }
+        .pager .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+            float: right;
+            margin-right: 15px;
+        }
+        
+        .pager .btn1{
+        	margin-right:5px;
+        }
+        .btn{
+            border-radius: 0;
+        }
+        .titlebox{
+            text-align: center;
+            height: 70px;
+            line-height: 70px;
+            margin: 40px auto;
+            border-bottom: 2px solid #d0baa8;
+        }
+        .titleSapn{
+            display: inline-block;
+            color: #555;
+            margin-top: 20px;
+        }
+        .titleSapn a{
+            font-size: 15px;
+            color: #555;
+        }
+        .reviewSapn{
+            font-weight: bold;
+        }
+        .titlebox p{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .review{
+            margin-top: 50px;
+            margin-bottom: 200px;
+        }
+        .reviewTable .reviewT{
+            text-align: center;
+            width:80px;
+            vertical-align: middle;
+            background-color: #d0baa8;
+            font-weight: bold;
+            color:#67605a;
+        }
+        .reviewTable .form-control{
+            display: inline;
+            border-radius: 0;
+            height: auto;
+            line-height: normal;
+        }
+        .reviewTable #title{
+            width: 40%;
+        }
+        .reviewTable #content{
+            width: 100%;
+        }
+        .reviewTable .form-control:focus{
+            -webkit-box-shadow:none;
+            box-shadow: none;
+            border-color: #d0baa8;
+        }

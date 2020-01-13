@@ -1,0 +1,113 @@
+
+        .btn{
+            border-radius: 0;
+        }
+        .titlebox{
+            text-align: center;
+            height: 70px;
+            line-height: 70px;
+            margin: 40px auto;
+            border-bottom: 2px solid #d0baa8;
+        }
+        .titleSapn{
+            display: inline-block;
+            color: #555;
+            margin-top: 20px;
+        }
+        .titleSapn a{
+            font-size: 15px;
+            color: #555;
+        }
+        .reviewSapn{
+            font-weight: bold;
+        }
+        .titlebox p{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .review{
+            margin-top: 50px;
+            margin-bottom: 200px;
+        }
+        .reviewTable .reviewT{
+            text-align: center;
+            width:80px;
+            vertical-align: middle;
+            background-color: #d0baa8;
+            font-weight: bold;
+            color:#67605a;
+        }
+        .reviewTable .form-control{
+            display: inline;
+            border-radius: 0;
+            height: auto;
+            line-height: normal;
+        }
+        .reviewTable #title{
+            width: 40%;
+        }
+        .reviewTable #content{
+            width: 100%;
+        }
+        .reviewTable .form-control:focus{
+            -webkit-box-shadow:none;
+            box-shadow: none;
+            border-color: #d0baa8;
+        }
+        /* 찾아보기 버튼  */
+        .filetextbox {
+            float:left;
+            height:36px;
+            border: 1px solid #ccc;
+        }
+        .file_input_div {
+            position:relative;
+            width:80px;
+            height:36px;
+            overflow:hidden;
+        }
+        .file_input_img_btn {
+            padding:0 0 0 5px;
+        }
+        .file_input_hidden {
+            font-size:29px;
+            position:absolute;
+            right:0px;
+            top:0px;
+            opacity:0;
+            filter: alpha(opacity=0);
+            -ms-filter: alpha(opacity=0);
+            cursor:pointer;
+        }
+
+        .btnBox .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+        }
+        
+        .btnBox .btn{
+            display: inline-block;
+            float: right;
+        }
+        .starR{
+            cursor: pointer;
+            color: #8a868675;
+            font-size:20px;
+            padding: 0px 2px;
+        }
+        .starRev .on{
+            color: #eac716;
+        }
+        /*미리보기*/
+        .fileDiv {
+		height: 130px;
+		width: 230px;
+		display: none;
+		margin: 10px 0px;
+	    }
+	
+	    .fileDiv img {
+		width: 100%;
+		height: 100%;
+	    }

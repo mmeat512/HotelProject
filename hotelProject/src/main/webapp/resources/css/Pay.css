@@ -1,0 +1,156 @@
+     .pay-title{
+            margin-top: 100px;
+            border-bottom: 2px solid #d0baa8;
+        }
+        .info-sel{
+            width: 100%;
+            margin: 30px 0;  
+            border-bottom: 1px solid #d0baa8;
+            padding-bottom: 50px;
+        }
+        .info-sel h4, .info-cus h4, .info-money h4{
+            padding-left: 30px;
+            display: block;
+            margin: 18px 0;
+            font-size: 24px;
+            font-weight: bolder;
+            color: #333333de;
+        }
+        .sel{
+            width: 100%;
+            overflow: hidden;
+        }
+        .sel-img{
+            float: left;
+        }
+        .sel-info{
+            float: right;
+            text-align: left;
+        }
+        .sel-info .p1,.cus .p1{
+            font-size: 17px;
+            font-weight: bolder;
+            padding: 5px 0;
+            color: #333333de;
+        }
+        .info-pay .pay p{
+            display: inline-block;
+            color: #333333de;
+            margin: 10px 0;
+        }
+        .info-pay .pay,.info-pay .pay-other{
+            overflow: hidden;
+        }
+        .info-pay .p2{
+            float: left;
+            color: #333333de;
+        }
+        .info-pay .p3{
+            font-size: 17px;
+            font-weight: bolder;
+            float: right;
+            color: #333333de;
+        }
+        .info-tot .p4{
+            float: right;
+            font-size: 27px;
+            font-weight: bolder;
+            color: #333333de;
+        }
+        .info-tot .p4 span{
+            font-size: 20px;
+            color: #333333de;
+        }
+        .float{
+            width: 100%;
+            overflow: hidden;
+            margin:30px 0;
+        }
+        .info-cus{
+            float: left;
+            margin: 15px 0;
+            border-right: 1px solid #d0baa8;
+        }
+        .info-money{
+            margin: 15px 0;
+            float: right;
+        }
+        .cus-name input{
+            background-color: #d0baa86e;
+            width: 60%;
+            padding: 10px 5px;
+        }
+        .cus-name input:focus,
+        .cus-email input:focus, .cus-email select:focus,
+        .cus-phone input:focus, .cus-phone select:focus{
+            outline: none;
+            background-color: white;
+            border: 1px solid #777;
+        }
+        .cus-email input,.cus-email select{
+            background-color: #d0baa86e;
+            width: 40%;
+            padding: 10px 5px;
+        }
+        .cus-phone select,.cus-phone input{
+            background-color: #d0baa86e;
+            width: 25%;
+            padding: 10px 5px;
+        }
+        .money .money-btn1{
+            font-size: 20px;
+            width: 80%;
+            margin-bottom: 25px;
+            padding: 10px 0;
+            background-color: #d0baa8;
+            color: #333333de;
+        }
+        .money .money-btn2{
+            font-size: 20px;
+            width: 80%;
+            padding: 10px 0;
+            background-color: #d0baa8;
+        }
+        .money{
+            padding-top: 10%;
+            padding-left: 7%;
+            margin-bottom: 30%;
+        }
+        .money button:focus{
+            outline: none;
+        }
+        .pay-modal{
+            text-align: center;
+        }
+        .pay-modal h4{
+            padding: 5px 0;
+        }
+        #moneyModal .modal-content{
+            border: 5px solid #d0baa8;
+        }
+        #moneyModal .modal-footer{
+            border-top: none;
+            text-align: center;
+        }
+        
+        /*요청 사항*/
+        .info-require .requireText{
+            background-color: #d0baa86e;
+            width:100%;
+            padding: 10px 5px;
+        }
+        
+        .info-require .p1{
+        	font-size: 17px;
+            font-weight: bolder;
+            padding: 5px 0;
+            color: #333333de;
+        }
+        
+        .info-require{
+        float:left;
+        width:100%;
+        margin-top:20px;
+        text-align:left;
+        
+        }

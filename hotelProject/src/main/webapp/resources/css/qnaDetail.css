@@ -1,0 +1,263 @@
+
+    /* 기본 설정 */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        section{
+            margin-bottom: 200px;
+        }
+        
+        /* 제목 */
+        .title {
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            float:none;
+           border-bottom: 2px solid #d0baa8;
+           padding-bottom: 10px;
+        }
+        
+        .title h2 {
+            margin: 0 auto;
+            text-align: center;
+            width: 80%;
+
+        }
+        
+        /* 테이블 틀 설정 */
+        th {
+            padding: 5px;
+            background-color: #d0baa8 ;
+            font-weight: bold;
+            color:#67605a;
+            vertical-align: middle;
+            text-align: center;
+            
+        }
+        
+        td {
+            padding: 8px 0px 8px 0px;
+            box-sizing: border-box;
+            
+        }
+        
+        tr {
+            border: 1px solid #ccc;
+            
+        }
+        
+        /* 테이블 내부 설정 */
+        .qnaboard {
+            margin:30px auto;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+        
+        .board {
+            width:70%;
+            border-bottom: 1px solid;
+            border-bottom-color: burlywood;
+            text-align: left;
+            margin-left: auto; margin-right: auto;
+        }
+        
+        .board #content {
+            height:200px;
+            width: 80%;
+            text-align: left;
+            padding: 20px 15px;
+            font-size: 16px;
+        }
+        
+        td span {
+            float: right;
+            margin-top:5px;
+            font-size: 12px;
+            vertical-align: middle;
+            color: red;
+            text-align: right;
+        }
+        
+        th * {
+            color: red;
+        }
+        
+        /* 인풋 요소들 설정 */
+        input {
+            display: inline-block;
+            border: 1px solid #ccc;      
+        }
+        
+        textarea , select{
+            border: 1px solid #ccc;
+        }
+        
+        
+        input, select, textarea {
+            padding:5px 10px;
+        }
+        input:focus, select:focus, textarea:focus{
+            border-color: #67605a;
+        }
+        
+        
+        /* 버튼 설정 */
+        .buttonDiv {
+            overflow: hidden;
+            width: 85.6%;
+
+        }
+        .qnabutton {
+            padding : 10px 15px;
+            background-color: #d0baa8;
+            color:white;
+            border:none;
+            text-align: center;
+            float: right;
+            color: #67605a;
+        }
+        #phone > td >select, #phone > td >input, #email> td >input{
+            width: 100px;
+            margin-bottom: 10px;
+            margin-right: 5px;
+            
+        }
+
+        
+        /* 버튼 설정 */
+        .leftButton {
+            width: 85.5%;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        .qnaListbutton {
+            margin-left: 17.5%;
+            padding : 10px 15px;
+            background-color: floralwhite;
+            border:1px solid;
+            border-color: #d6d6d6;
+            text-align: center;
+            float: left;
+        }
+        
+        .qnaUpdatebutton, .qnaDeletebutton {
+            padding : 10px 15px;
+            background-color: #d0baa8;
+            color:white;
+            border:none;
+            text-align: center;
+            float: right;
+        }
+        
+        .qnaUpdatebutton:hover , .qnaDeletebutton:hover{
+        border-color: #d0baa8;
+        }
+        
+        .inputPhone{
+   	  	margin-left:10px;
+   	  	margin-right:10px;
+   	}
+   	.selectPhone{
+   		height:30px;
+   	}
+
+   	/* qnaDetail 댓글영역 */
+.reply-wrap {
+	padding: 15px;
+	border: 1px solid #ddd;
+	position: relative; /*부모에 relative*/
+	width: 70%;
+    margin: 0 auto;
+}
+
+.reply-wrap .reply-content {
+	padding-left: 60px;
+	padding-top:10px;
+	
+}
+/*부트스트랩의 form-control 조정 */
+.reply-content>.form-control {
+	resize: vertical; /*세로로만 조정가능*/
+	width: 100%; /*최대 100%*/
+	min-height: 80px; /*최대 넓이*/
+	margin-bottom: 10px;
+	border-radius: 0;
+}
+
+.reply-input>.form-control {
+	width: 200px;
+	margin-bottom: 5px;
+	border-radius: 0;
+}
+
+.reply-group {
+	overflow: hidden;
+}
+
+.reply-input {
+	float: left;
+}
+
+.reply-group .right {
+	float: right;
+}
+
+/*댓글 영역*/
+.reply-group small {
+	margin-left: 10px;
+	height: 20px;
+	line-height: 20px;
+}
+
+.reply-group small, .reply-group strong {
+	float: left;
+}
+
+.reply-group a {
+	text-decoration: none;
+	color: #777;
+	float: right;
+}
+
+.qnaboard-reply {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	float: none;
+	padding: 0;
+}
+
+.reply {
+	width: 100%;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: a8;
+	padding: 10px;
+	/* #ebe1d9 */
+}
+
+#replyRegist {
+	background-color: #e4d7cd;
+	border-radius: 0;
+	color: #67605a;
+	font-weight: bold;
+}
+
+.replyBorder {
+	border-top: 2px solid #d0baa8;
+	width: 75%;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	float: none;
+}
+
+.clearfix{
+	padding-top : 5px;
+}

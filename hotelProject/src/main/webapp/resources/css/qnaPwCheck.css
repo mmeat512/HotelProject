@@ -1,0 +1,130 @@
+      .secret {
+             height: 15px;
+         }
+         .titlebox{
+             text-align: left;
+             border-bottom: 0px;
+			 margin-top:10%;
+             margin-bottom: 5px;
+         }
+         .table{
+             border-top: 1px solid #d0baa8;
+            border-bottom: 1px solid #d0baa8;
+         }
+         .reviewThead{
+             background-color: #d0baa894;
+            border-bottom: 1px solid #d0baa8;
+         }
+         .searchDiv{
+             overflow: hidden;
+         }
+         .search{
+             float: right;
+         }
+         .searchDiv #sel1{
+             width: 110px;
+             margin-bottom: 10px;
+             border-radius: 0;
+         }
+         .searchDiv input{
+             width: 25%;
+             border: 1px solid #ccc;
+             padding: 6px 0;
+             border-radius: 0;
+         }
+         .pagination{
+             padding:15px;
+             margin: 0 auto;
+             float: none;
+             text-align: center;
+             overflow: hidden;
+             box-sizing: border-box;
+         }
+         .pagination li > a{
+             border-radius: 0;
+             color:#755c31;
+             border-color: #777;
+         }
+         .searchDiv .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+         }
+         .pagination > .active > a{
+             background-color: #d0baa8;
+             border-color: #a08d7d;
+         }
+         .pagination > li:last-child > a,
+         .pagination > li:last-child > span,.pagination > li:first-child > a,
+         .pagination > li:first-child > span,
+         .pagination > li > a{
+             border-color :#a08d7d;
+             border-radius: 0;
+         }
+        .qnaPwBtn{
+            display: block;
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color: #67605a;
+			font-weight:bold;
+            margin: 0 auto;
+            float:left;
+            height:40px;
+            width:50px;
+        }
+        .btn{
+            border-radius: 0;
+        }
+        .titlebox{
+            text-align: center;
+            height: 70px;
+            line-height: 70px;
+            margin: px auto;
+            margin-bottom: 10px;
+        }
+         
+         .titlebox h2 {
+            margin: 0 auto;
+            text-align: center;
+            width: 300px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d0baa8;
+         }
+        
+        .titlebox p{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .content{
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
+        
+         #qnaBoardPw {
+             display: block;
+             margin: 0 auto;
+             border-bottom: 2px solid #d0baa8;
+             text-align: center;
+             border:1px solid #d0baa8;
+             height:40px;
+         }
+         
+         .secretInsert {
+             height: 150px;
+         }
+         .foot {
+             padding-bottom: 10px;
+         }
+         
+         .btn-info:hover{
+         background-color:#d0baa8;
+         border-color: #d0baa8;
+         }
+         
+         .qnaPwBtnDiv{
+            overflow: hidden;
+            margin:0 auto;
+            width:105px;
+             text-align: center;
+            
+         }

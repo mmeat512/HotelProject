@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		
+		<aop:aspectj-autoproxy/>
+		
+		<!-- 세션값 없을 때 마이페이지 접근 제한 -->
+		<beans:bean id = "userInterceptor" class="com.hotel.util.interceptor.UserInterceptor"/>
+		<!-- 관리자 세션이 아닐 때 관리자페이지 접근 제한 -->
+		<beans:bean id = "adminInterceptor" class="com.hotel.util.interceptor.AdminInterceptor"/>
+		<!-- 로그인페이지 uri저장 -->
+		<beans:bean id = "loginFormInterceptor" class="com.hotel.util.interceptor.LoginFormInterceptor"></beans:bean>
+		<!-- 작성자아닐 시 게시글 수정,삭제 제한 -->
+		<beans:bean id ="ReviewBoardInterceptor" class="com.hotel.util.interceptor.ReviewBoardInterceptor"></beans:bean>
+		<!-- 문의게시판 회원일 때 등록화면 -->
+		<beans:bean id ="qnaBoardInterceptor" class="com.hotel.util.interceptor.QnaBoardInterceptor"></beans:bean>
+		<interceptors>
+			<interceptor>
+				<mapping path="/users/userMypage"/>
+				<mapping path="/users/userReservePage"/>
+				<mapping path="/review/reviewRegist"/>
+				<beans:ref bean="userInterceptor"/>
+			</interceptor>
+			<interceptor>
+				<mapping path="/admin/adminMain"/>
+				<mapping path="/admin/adminRoomDetail"/>
+				<mapping path="/admin/adminRoomList"/>
+				<mapping path="/admin/adminRoomRegist"/>
+				<mapping path="/admin/adminSpecialDetail"/>
+				<mapping path="/admin/adminSpecialList"/>
+				<mapping path="/admin/adminSpecialRegist"/>
+				<mapping path="/admin/adminTotal"/>
+				<beans:ref bean="adminInterceptor"/>
+			</interceptor>
+			<interceptor>
+				<mapping path="/users/loginForm"/>
+				<beans:ref bean="loginFormInterceptor"/>
+			</interceptor>
+			<interceptor>
+				<mapping path="/review/reviewDetail"/>
+				<beans:ref bean="ReviewBoardInterceptor"/>
+			</interceptor>
+			<interceptor>
+				<mapping path="/qna/qnaRegist"/>
+				<beans:ref bean="qnaBoardInterceptor"/>
+			</interceptor>
+		</interceptors>
+		
+
+
+</beans:beans>

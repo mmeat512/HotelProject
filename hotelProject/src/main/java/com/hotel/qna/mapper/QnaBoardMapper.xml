@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hotel.qna.mapper.QnaBoardMapper">
+		
+		<select id="getRegist" resultType="UserVO">
+			select * from users where userId = #{userId}
+		</select>
+	
+		
+		<insert id="qnaRegistForm">
+			insert into qnaboard (qnaBno, qnaId,qnaTitle, qnaContent, qnaType, qnaBoardPw, qnaWriter, qnaengName, qnaemail1, qnaemail2, qnaphone1, qnaphone2, qnaphone3, reserveNum,qnaAnswer, qnasecret)
+			values (qnabno.nextval,#{qnaId},#{qnaTitle},#{qnaContent},#{qnaType},#{qnaBoardPw},#{qnaWriter},#{qnaengName},#{qnaemail1},#{qnaemail2},#{qnaphone1},#{qnaphone2},#{qnaphone3},#{reserveNum},#{qnaAnswer},#{qnasecret})
+		</insert>
+		
+		<select id="getQnaBoardList" resultType="QnaBoardVO">
+			<![CDATA[select * from (select rownum as rn, qnabno, qnadate, qnatitle, qnaboardpw, qnawriter
+			, qnasecret, qnaAnswer from (select * from qnaboard where ]]> 
+			<if test="searchType == 'all'">1=1</if>
+			<if test="searchType == 'notanswer'">qnaanswer = 'no'</if>
+			<if test="searchType == 'answer'">qnaanswer = 'ok'</if>
+			<if test="searchType == 'title'">qnatitle like'%'||#{searchName}||'%'</if>
+			<if test="searchType == 'content'">qnacontent like'%'||#{searchName}||'%'</if>
+			<if test="searchType == 'writer'">qnawriter like'%'||#{searchName}||'%'</if>
+			<if test="searchType == 'titcon'">qnatitle like'%'||#{searchName}||'%' 
+			or qnacontent like '%'||#{searchName}||'%' </if>
+			<if test="searchType == '' or searchType == null">1=1</if>
+			<![CDATA[order by qnabno desc))where rn > (#{pageNum}-1)*#{amount} and rn <= #{pageNum}*#{amount}]]>
+		</select>
+		
+		<select id="getContent" resultType="QnaBoardVO">
+			select * from qnaboard where qnabno = #{qnaBno}
+		</select>
+		
+		<update id="qnaUpdate">
+			update qnaboard set qnaTitle=#{qnaTitle}, qnaType=#{qnaType}, qnaBoardPw=#{qnaBoardPw}, qnaWriter=#{qnaWriter}, qnaengName=#{qnaengName}, qnaemail1=#{qnaemail1}
+			, qnaemail2=#{qnaemail2}, qnaphone1=#{qnaphone1}, qnaphone2=#{qnaphone2}, qnaphone3=#{qnaphone3},reserveNum=#{reserveNum} where qnaBno=#{qnaBno}
+		</update>
+		
+		<delete id="qnaDelete">
+			delete from qnaboard where qnaBno = #{qnaBno}
+		</delete>
+		
+		<select id="getTotal" resultType="int">
+			select count(*) as total from qnaboard where
+			<if test="searchType == 'all'">1=1</if>
+			<if test="searchType == 'notanswer'">qnaanswer = 'no'</if>
+			<if test="searchType == 'answer'">qnaanswer = 'ok'</if>
+			<if test="searchType == 'title'">qnatitle like'%'||#{searchName}||'%'</if>
+			<if test="searchType == 'content'">qnacontent like'%'||#{searchName}||'%'</if>
+			<if test="searchType == 'writer'">qnawriter like'%'||#{searchName}||'%'</if>
+			<if test="searchType == 'titcon'">qnatitle like'%'||#{searchName}||'%' 
+			or qnacontent like '%'||#{searchName}||'%' </if>
+			<if test="searchType == '' or searchType == null">1=1</if>
+		</select>
+		
+		<update id="qnaAnswerUpdate">
+			update qnaboard set qnaAnswer = 'ok' where qnaBno = #{qrBno} 
+		</update>
+		
+		
+	</mapper>

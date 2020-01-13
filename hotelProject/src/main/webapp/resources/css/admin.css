@@ -1,0 +1,292 @@
+		 .pagination > .active > a:focus,
+		 .pagination > .active > a:hover{
+           background-color:#d0baa8;
+           border-color:#a08d7d;
+        } 
+         
+         .table{
+             border-top: 1px solid #d0baa8;
+            border-bottom: 1px solid #d0baa8;
+         }
+        .titlebox{
+            text-align: center;
+            line-height: 70px;
+            margin: 40px auto;
+            width: 80%;
+            float: left;
+        }
+        
+        .titlebox .drop .drop-btn{
+        	background-color: white;
+        	height: 50px;
+        }
+        .titleSapn{
+            display: inline-block;
+            color: #555;
+            margin-top: 20px;
+        }
+        .titleSapn a{
+            font-size: 15px;
+            color: #555;
+        }
+        .reviewSapn{
+            font-weight: bold;
+        }
+        .titlebox p{
+            font-size: 25px;
+            font-weight: bold;
+            border-bottom: 2px solid #d0baa8;
+        }
+        .review{
+            margin-top: 50px;
+            margin-bottom: 100px;
+           
+        }
+        /*  */
+        .searchDiv{
+             overflow: hidden;
+             margin-top:30px;
+         }
+         .searchDiv span{
+             float:left;
+             height:40px;
+             margin-bottom:10px;
+         }
+         .searchDiv .btn{
+             background-color:#d9c6b8;
+             border-radius:0px;
+             border-color:#d9c6b8;
+         }
+         .search{
+             float: right;
+         }
+         .searchDiv #sel1{
+             width: 110px;
+             margin-bottom: 10px;
+             border-radius: 0;
+         }
+         .searchDiv #searchName{
+             width: 25%;
+             border: 1px solid #ccc;
+             padding: 6px 0;
+             border-radius: 0;
+             height:34px;
+         }
+         
+         
+         /*  */
+         .table .reviewThead{
+             background-color: #d0baa894;
+         }
+        .reviewThead  tr  th {
+        	text-align: center;
+        }
+        
+        .reviewTable .reviewT{
+            text-align: center;
+            width:80px;
+            vertical-align: middle;
+            background-color: #d0baa8;
+            font-weight: bold;
+            color:#67605a;
+        }
+        .reviewTable .form-control{
+            display: inline;
+            border-radius: 0;
+            height: auto;
+            line-height: normal;
+        }
+        .reviewTable .title{
+            width: 40%;
+        }
+        .reviewTable #content{
+            width: 100%;
+        }
+        .reviewTable .form-control:focus{
+            -webkit-box-shadow:none;
+            box-shadow: none;
+            border-color: #d0baa8;
+        }
+		.btnBox .btn1{
+			margin-right: 5px;
+		}
+         /*--------------myList모달창-------------------------*/
+        #headerTitleArea {
+            text-align: center;
+            padding: 15px;
+            font-size: 180%;
+            font-weight: bold;
+            padding-top: 18px;
+        }
+
+
+        .reserve-modal-th {
+            width: 30%;
+        }
+
+        .table-bordered {
+            width: 100%;
+            border: 1px solid #d0baa8;
+
+        }
+
+        .modal-reserve-container {
+            padding-top: 15%;
+            width: 150%;
+        }
+
+
+        .modal-reserve-container table>thead>tr>th {
+            background-color: #d0baa8;
+        }
+
+        .modal-reserve-container table>tbody>tr>td {
+            border: 1px solid #ddd;
+        }
+
+        .modal-content {
+            border: 5px solid #d0baa8;
+        }
+
+        #reserve_list {
+            padding: 0;
+        }
+
+        .tab-content {
+            padding-bottom: 100px;
+        }
+
+        .reserveList>table>thead>tr {
+            background-color: #d0baa894;
+        }
+        
+          /*--------------좌측 메뉴바-------------------*/
+          
+          
+          .menu-po{
+          	margin-top: 158px;
+          	padding-left: 30px;
+          }
+          
+		 ul#navi {
+          	position: fixed;
+		       width: 13%;
+		        text-indent: 10px;
+		        padding-right: 30px;
+		}
+		    ul#navi, ul#navi ul {
+		        margin:0;
+		        padding:0;
+		        list-style:none;
+		}
+		    li.group {
+		        margin-bottom: 3px;
+		}
+		    li.group div.title {
+		        height: 35px;
+		        line-height: 35px;
+		        background:#d0baa8;
+		        cursor:pointer;
+		}
+		    ul.sub li {
+		        margin-bottom: 2px;
+		        height:35px;
+		        line-height:35px;
+		        background-color:white;
+		        cursor:pointer;
+		}
+		    ul.sub li a {
+		        display: block;
+		        width: 100%;
+		        height:100%;
+		        text-decoration:none;
+		        color:#000;
+		}
+		    ul.sub li:hover {
+		        background:#d0baa840;
+		}
+		/* 드롭다운 */
+		.drop .drop-btn{
+		 	width: 150px;
+		}
+		.drop .drop-ti{
+			width: 100px;
+			border-radius: 0px;
+		}
+		.drop .drop-ti a{
+			padding-right: 0px; 
+		}
+		 .titlebox .drop{
+        	display: none;
+        }
+        @media screen and (max-width: 1000px) {
+       			.menu-po{
+       				display:none;
+       			}
+       			 .titlebox .drop{
+       				float:left;
+        			display: inline;
+        			height: 50px; 
+       			}
+       			.titlebox{
+       				width: 100%;
+       			}
+        } 
+        
+        /* 찾아보기 버튼  */
+        .filetextbox {
+            float:left;
+            height:36px;
+            border: 1px solid #ccc;
+        }
+        .file_input_div {
+            position:relative;
+            width:80px;
+            height:36px;
+            overflow:hidden;
+        }
+        .file_input_img_btn {
+            padding:0 0 0 5px;
+        }
+        .file_input_hidden {
+            font-size:29px;
+            position:absolute;
+            right:0px;
+            top:0px;
+            opacity:0;
+            filter: alpha(opacity=0);
+            -ms-filter: alpha(opacity=0);
+            cursor:pointer;
+        }
+
+        .btnBox .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+        }
+        
+        .btnBox .btn{
+            display: inline-block;
+            float: right;
+        }
+        .starR{
+            cursor: pointer;
+            color: #8a868675;
+            font-size:20px;
+            padding: 0px 2px;
+        }
+        .starRev .on{
+            color: #eac716;
+        }
+        /*미리보기*/
+        .fileDiv {
+		height: 130px;
+		width: 230px;
+		display: none;
+		margin: 10px 0px;
+	    }
+	
+	    .fileDiv img {
+		width: 100%;
+		height: 100%;
+	    }

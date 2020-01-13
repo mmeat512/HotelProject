@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hotel.review.mapper.ReviewBoardMapper">
+		<!-- 이용후기 등록 -->
+		<insert id="reviewRegist">
+			insert into reviewboard values(REVIEWBNO.nextval,sysdate,sysdate,#{reviewTitle},#{reviewContent},#{reviewId},
+									#{reviewRate},#{reviewfilename},#{reviewfilerealname},#{reviewfileloca},#{reviewfileUploadpath},#{reviewRoom},0)
+		</insert>
+		<!-- 이용후기 리스트 -->
+		<select id="getList" resultType="ReviewBoardVO">
+			<![CDATA[
+			select * 
+			from(select rownum as rn, reviewbno, reviewdate, reviewupdatedate, reviewtitle, reviewcontent,reviewid,reviewrate,reviewfilename,reviewfilerealname,reviewfileloca,reviewfileuploadpath 
+				from (select * 
+					from reviewboard 
+					where]]>
+			<if test="searchType == 'room'">reviewroom = #{searchName, jdbcType=VARCHAR}</if>
+			<if test="searchType == 'star'">reviewrate >= #{searchName}</if>
+			<if test="searchType == null or searchType == ''">1=1</if>
+			<![CDATA[order by ]]>
+			<if test="searchType == 'room'">reviewbno desc</if>
+			<if test="searchType == 'star'">reviewrate asc</if>
+			<if test="searchType == null or searchType == ''">reviewbno desc</if>
+			<![CDATA[)) 
+			where rn>(#{pageNum}-1)*#{amount} and rn<=#{pageNum}*#{amount}]]>
+			
+		</select>
+		<!-- 이용후기디테일 -->
+<!-- 		<select id="detail" resultType="ReviewBoardVO">
+			select * from reviewboard where reviewBno = #{reviewBno}
+		</select> -->
+		<select id="detail" resultMap="reviewBoardList">
+			select * from reviewboard a left outer join reviewreply b on a.reviewbno = b.rbno where reviewBno=#{reviewBno} 
+		</select>
+		
+		<resultMap id="reviewBoardList" type="ReviewBoardVO">
+			<result property="reviewBno" column="reviewBno"/>
+			<result property="reviewId" column="reviewId"/>
+			<result property="reviewDate" column="reviewDate"/>
+			<result property="reviewUpdateDate" column="reviewUpdateDate"/>
+			<result property="reviewTitle" column="reviewTitle"/>
+			<result property="reviewContent" column="reviewContent"/>
+			<result property="reviewRate" column="reviewRate"/>
+			<result property="reviewfilename" column="reviewfilename"/>
+			<result property="reviewfilerealname" column="reviewfilerealname"/>
+			<result property="reviewfileloca" column="reviewfileloca"/>
+			<result property="reviewfileUploadpath" column="reviewfileUploadpath"/>
+			<result property="reviewRoom" column="reviewRoom"/>
+			<result property="likeHit" column="likeHit"/>
+			<collection resultMap="replyvo" property="replyvo"/>
+		</resultMap>
+		
+		<resultMap id="replyvo" type="ReviewReplyVO">
+			<result property="rBno" column="rBno"/>
+			<result property="rNum" column="rNum"/>
+			<result property="rDate" column="rDate"/>
+			<result property="rContent" column="rContent"/>
+			<result property="rId" column="rId"/>
+		</resultMap>
+		
+		<!-- 이용후기 삭제 -->
+		<delete id="delete">
+			delete from reviewboard where reviewBno = #{reviewBno}
+		</delete>	
+		<!-- 이용후기수정 -->
+		<update id="update">
+			update reviewboard set 
+					reviewtitle = #{reviewTitle} , 
+					reviewcontent= #{reviewContent}, 
+					reviewrate= #{reviewRate}, 
+					reviewfilename= #{reviewfilename, jdbcType=VARCHAR}, 
+					reviewfilerealname= #{reviewfilerealname, jdbcType=VARCHAR},
+					reviewfileloca= #{reviewfileloca, jdbcType=VARCHAR}, 
+					reviewfileuploadpath= #{reviewfileUploadpath, jdbcType=VARCHAR},
+					reviewupdatedate=sysdate,
+					reviewroom = #{reviewRoom}  
+					where reviewbno= #{reviewBno}
+		</update>
+		
+		<!-- 총게시글 -->
+		<select id="getTotal" resultType="int">
+			select count(*) as total 
+			from reviewboard 
+			where
+			<if test="searchType == 'room'">reviewroom = #{searchName, jdbcType=VARCHAR}</if>
+			<if test="searchType == 'star'">1=1</if>
+			<if test="searchType == null or searchType == ''">1=1</if>
+		</select>
+		
+		
+		<!-- 좋아요 -->
+		<!-- 좋아요증가 -->
+		<update id="likeUpdate">
+			update BoardLike set likehit=#{likeHit} where reviewBno = #{reviewBno}
+		</update>
+		
+		<!-- 리뷰보드게시판에 좋아요 추가 -->
+		<update id="likeBoardUpdate">
+			update reviewboard set likehit=#{likeHit} where reviewBno = #{reviewBno}
+		</update>
+		
+		<!-- 좋아요개수뽑기 -->
+		<select id="likeSel" resultType="int">
+			select likehit from reviewboard where reviewBno = #{reviewBno}
+		</select>
+		
+		<!-- 좋아요아이디입력 -->
+		<insert id="userLikeInsert">
+			insert into BoardLike(hitid,reviewbno) values(#{hitId},#{reviewBno})
+		</insert>
+		
+		<!-- 좋아요아이디출력 -->
+		<select id="likeId" resultType="String">
+			select hitid from boardlike where reviewbno=#{reviewBno}
+		</select>
+		
+		
+		
+	</mapper>

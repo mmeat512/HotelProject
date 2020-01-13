@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hotel.reserve.mapper.ReserveMapper">
+ 		<insert id="reserveInsert">
+			insert into reserve (roomtype, bedtype, staydate, reservecheckin, reservecheckout, userid, reservenum,
+			reserveadult, reservekid, reservebaby, reserverequire, reservestate, hotelprice) values (#{roomType},#{bedType},#{stayDate},#{reserveCheckin},
+			#{reserveCheckout},#{userId},#{reserveNum},#{reserveAdult},#{reserveKid},#{reserveBaby},#{reserveRequire},#{reserveState},#{hotelPrice})
+		</insert>
+		<insert id="reserveUserInsert">
+			insert into reserveUser values (#{reserveNum},#{reserveName},#{reserveEmail1},#{reserveEmail2},#{reservePhone1},#{reservePhone2},#{reservePhone3})
+		</insert>
+		
+    <select id="reserveSearch" resultType="HotelVO">
+         <![CDATA[
+         select DISTINCT a.*,b.*
+             FROM hotel a 
+             left outer join (select distinct roomtype, bedtype, peoplecnt,roomname 
+                            from (select distinct roomtype,bedtype,peoplecnt,roomname 
+                               from(select * 
+                                  from room 
+                                     where roomnum not in (select DISTINCT roomnum 
+                                                       from reserve 
+                                                          where (staydate >= #{reserveCheckin} and staydate <= #{reserveCheckout}) and 
+         reserve.reservecheckout != #{reserveCheckin} and reserve.reservecheckin != #{reserveCheckout}) order by roomnum asc))) b on a.hotelname = b.roomname 
+         ]]>
+      </select>
+      
+      <select id="reserveDetail" resultType="HotelVO">
+         select * from hotel where hotelname like #{hotelName}||'%'
+      </select>
+
+		
+	</mapper>

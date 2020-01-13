@@ -1,0 +1,147 @@
+
+        
+        /*reserve페이지에서만 적용하는 css*/
+        .reserve{
+            border-bottom: 0px;
+            margin-bottom: 20px;
+        }
+        .stepFirst{
+            padding-top: 50px;
+        }
+        .titleSapn{
+            color: #555;
+            margin-top: 20px;
+            border-bottom: 2px solid #d0baa8;
+            height: 70px;
+            line-height: 70px;
+            margin: 20px auto;
+            text-align : center;
+            
+        }
+        .titleSapn span{
+            font-weight: bold;
+            margin: 0px 10px;
+            
+        }
+        
+        .titleSapn a{
+            font-size: 15px;
+            color: #555;
+            
+        }
+        
+        /*예약검색 창 전용 css*/
+        .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            float: right;
+        }
+        .btn-info:focus, .btn-info:hover{
+            outline: none;
+            background-color:#d0baa8;
+            border-color: #d0baa8;
+        }
+        .btn{
+            height: 42px;
+            border-radius: 0;
+        }
+        .reserveSearch{
+            margin: 50px 0px;
+            padding-right: 0px;
+            margin-right: 15px;
+        }
+        
+        .searchDetail .Detail{
+            border:1px solid #ccc;
+            padding-right: 0px;
+
+        }
+        
+        .Detail label{
+            height: 10px;
+            line-height: 10px;
+            margin-top:10px;
+        }
+ 
+ 
+        .right{
+            float: right;
+            padding-right: 0px;
+        }
+        
+        .reserveSearch .roomName{
+            font-weight: bold; 
+            font-size: 25px; 
+            margin-bottom:30px;
+        }
+        
+        .reserveSearch .roomMore{
+            margin-top: 20px;
+        }
+        .roomMore > a{
+            text-decoration: none;
+            color:#888;
+        }
+        .reserveSel{
+            text-align: right; 
+            margin-top: 97px; 
+            vertical-align: middle;
+        }
+        .reserveSel .reservePrice{
+            display: inline-block; 
+            margin-right: 10px;
+        }
+        
+        .price{
+            font-weight: bold; 
+            font-size: 20px;
+        }
+        .detailPrice{
+            float: right;
+            padding: 10px 15px;
+        }
+        
+        .roomDetail{
+            padding: 0px;
+        }
+        
+        .roomDetail li{
+            margin-bottom: 5px;
+            list-style: disc;
+        }
+        .imgPre .preImg{
+            padding: 10px;
+        }
+        .modal-header {
+            background-color:#d0baa8;
+        }
+        .roomService{
+            margin-bottom: 20px; 
+            border-left: 1px solid #ccc;
+        }
+        .searchDetail{
+            display: none;
+        }
+        @media ( max-width :767px){
+            .roomService{
+                border : 0;
+            }
+        }
+        .searchResult{
+            display: none;
+            margin-bottom: 40px;
+        }
+        .searchDetail .Detail a{
+            padding: 0px 20px; 
+            font-weight: bold; 
+            font-size: 13px;
+            text-decoration: none;
+            color:#888;
+        }
+        
+        .detail2{ 
+            margin-bottom: 20px; 
+            padding: 15px 10px; 
+            border-bottom: 1px solid #ccc;
+        }
+        

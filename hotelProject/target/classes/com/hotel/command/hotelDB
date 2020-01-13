@@ -1,0 +1,167 @@
+create table hotel(
+    hotelname varchar2(100) not null,
+    hotelname2 varchar2(100) not null,
+    hotelcontent VARCHAR2(2000) not null,
+    hotelloca VARCHAR2(100)  not null,
+    hotelpeople NUMBER(10,0)  not null,
+    hotelsize NUMBER(10,0)  not null,
+    hotelbed VARCHAR2(50) not null, 
+    hotelview VARCHAR2(50) not null,
+    hotelcheckin VARCHAR2(100) not null,
+    hotelcheckout VARCHAR2(100) not null,
+    hotelPrice NUMBER(10,0) not null,
+    hotelfileloca varchar2(50) not null,
+    hotelfilename varchar2(50) not null,
+    hotelfilerealname varchar2(50) not null,
+    hotelfileuploadpath varchar2(100) not null
+);
+
+create table specialintro (
+    specialfileloca varchar2(50) not null,
+    specialfilename varchar2(50) not null,
+    specialfilerealname varchar2(50) not null,
+    specialfileuploadpath varchar2(100) not null,
+    specialname varchar2(100) not null,
+    specialcontent varchar2(2000) not null
+);
+
+create table users(
+    userid varchar2(50) not null CONSTRAINT users_userid_pk PRIMARY key,
+    userpw varchar2(50) not null,
+    username varchar2(50) not null,
+    userengname varchar2(50) ,
+    useraddrzipnum varchar2(50) ,
+    useraddrbasic varchar2(300) ,
+    useraddrdetail varchar2(300) ,
+    userphone1 varchar2(50) not null,
+    userphone2 varchar2(50) not null,
+    userphone3 varchar2(50) not null,
+    useremail1 varchar2(50) not null,
+    useremail2 varchar2(50) not null,
+    userbirth1 number(10,0) ,
+    userbirth2 number(10,0) ,
+    userbirth3 number(10,0) 
+);
+
+create table reviewboard(
+    reviewbno number(10,0) not null,
+    reviewdate date DEFAULT sysdate ,
+    reviewupdatedate date DEFAULT sysdate,
+    reviewtitle VARCHAR2(50) not null,
+    reviewcontent VARCHAR2(2000) not null,
+    reviewid VARCHAR2(50) not null,
+    reviewrate number(10,0) not null,
+    reviewfilename VARCHAR2(50),
+    reviewfilerealname VARCHAR2(50),
+    reviewfileloca VARCHAR2(50),
+    reviewfileuploadpath VARCHAR2(100),
+    reviewroom VARCHAR2(100),
+    likehit number(10) DEFAULT 0 not null
+);
+
+create table qnaboard(
+    qnabno number(10,0) not null CONSTRAINT qnaboard_qnabno_pk primary KEY,
+    qnaId varchar2(50),
+    qnadate date DEFAULT SYSDATE,
+    qnatitle varchar2(50) not null,
+    qnacontent varchar2(2000) not null,
+    qnatype varchar2(20) not null,
+    qnaboardpw varchar2(10),
+    qnawriter varchar2(20) not null,
+    qnaEngName VARCHAR2(50) not null,
+    qnaEmail1 VARCHAR2(50) not null,
+    qnaEmail2 VARCHAR2(50) not null,
+    qnaPhone1 VARCHAR2(50) not null,
+    qnaPhone2 VARCHAR2(50) not null,
+    qnaPhone3 VARCHAR2(50) not null,
+    reservenum varchar2(20),
+    qnanswer varchar2(20),
+    qnasecret VARCHAR2(20) not null
+);
+
+
+create table qnareply(
+    qrbno number(10,0) not null,
+    qrnum number(10,0) not null CONSTRAINT qnareply_qrnum_pk PRIMARY key,
+    qrdate date default SYSDATE,
+    qrid varchar2(20) not null,
+    qrcontent varchar2(1000) not null
+
+);
+
+create table reviewreply(
+    rbno number(10,0) not null,
+    rnum number(10,0) not null CONSTRAINT reviewreply_rbno_pk PRIMARY key,
+    rdate date default SYSDATE,
+    rcontent varchar2(1000) not null,
+    rid varchar2(20)
+);
+
+create table reserveDelete(
+    roomnum number(10,0) not null,
+    roomtype varchar2(50) not null,
+    bedtype varchar2(50) not null,
+    reservedate varchar2(50) not null,
+    deletedate date default SYSDATE not null,
+    reservecheckin varchar2(50) not null,
+    reservecheckout varchar2(50) not null,
+    userid varchar2(50) not null,
+    reserveAdult number(10,0),
+    reserveKid number(10,0),
+   reserveBaby number(10,0),
+   reserveRequire varchar2(200),
+    reservenum varchar2(50),
+    reservestate varchar2(50),
+    hotelprice number(10,)
+);
+
+create table reserveUser(
+    reservenum varchar2(50) not null,
+    reservename varchar2(50) not null,
+    reserveemail1 varchar2(50) not null,
+    reserveemail2 varchar2(50) not null,
+    reservephone1 varchar2(50)not null,
+    reservephone2 varchar2(50)not null,
+    reservephone3 varchar2(50)not null
+);
+
+create table reserve(
+    roomnum number(10,0),
+    roomtype varchar2(50) not null,
+    bedtype varchar2(50) not null,
+    staydate varchar2(50) not null,
+    reservedate date default SYSDATE not null,
+    reservecheckin varchar2(50) not null,
+    reservecheckout varchar2(50) not null,
+    userid varchar2(50) not null,
+    reserveAdult number(10,0),
+    reserveKid number(10,0),
+    reserveBaby number(10,0),
+    reserveRequire varchar2(200),
+    reservestate varchar2(50),
+    reservenum varchar2(50)
+);
+
+create table room(
+    roomnum number(10,0) not null CONSTRAINT room_roomnum_pk PRIMARY key,
+    roomtype VARCHAR2(50) not null,
+    bedtype VARCHAR2(50) not null,
+    peoplecnt number(10,0) not null,
+    roomname varchar2(50)
+);
+
+CREATE table boardlike(
+    reviewbno NUMBER(10) not null ,
+    likehit number(10) DEFAULT 0 not null,
+    hitid VARCHAR(50) not null
+);
+
+create SEQUENCE roomnum1 START WITH 101;
+create SEQUENCE roomnum2 START WITH 201;
+create SEQUENCE roomnum3 START WITH 301;
+create SEQUENCE qnabno;
+create SEQUENCE qrnum;
+create SEQUENCE reviewbno;
+create SEQUENCE rnum;
+
+insert into users values ('admin','admin','더 벤자민','admin','00000','kgItbank','kgItbank','010','1234','5678','admin','naver.com','2019','12','25');

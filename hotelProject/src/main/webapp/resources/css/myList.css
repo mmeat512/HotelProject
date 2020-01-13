@@ -1,0 +1,535 @@
+      /*---------------------마이페이지 예약현황 style-----------------*/
+        ul,
+        li {
+            list-style: none;
+        }
+        li {
+            text-align: -webkit-match-parent;
+        }
+
+        .menu-list {
+            width: 100%;
+            background-color: #0e2f56;
+            color: white;
+        }
+
+        .menu {
+            border-top: 1px solid white;
+        }
+
+        .intro-btn {
+            width: 100%;
+            background-color: #0e2f56;
+            border: 0;
+            text-align: left;
+            font-size: 80%;
+        }
+
+        .menu-Tit {
+            padding: 6px 12px;
+            font-size: 150%;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu-list {
+            width: 100%;
+        }
+
+        .section-inner {
+            margin-top: 150px;
+        }
+
+        .mypage-tog>li {
+            padding: 0;
+            background-color: #d0baa8;
+        }
+
+        .mypage-tog {
+            border-bottom: 0;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .mypage-tog>li>a {
+            color: white;
+            margin: 0 auto;
+            width: 100%;
+            padding-left: 7px;
+            padding-right: 7px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .mypage-tit {
+            font-size: 300%;
+            text-align: center;
+            padding-bottom: 50px;
+            padding-top: 100px;
+        }
+
+        .fade>h3 {
+            padding-top: 30px;
+            padding-bottom: 20px;
+            text-align: center;
+            font-size: 230%;
+        }
+
+        .nav-tabs>li>a {
+            margin: 0;
+
+        }
+
+        .tab-content {
+            margin-top: 30px;
+        }
+
+        /*예약현황*/
+        .reserveList {
+            overflow: hidden;
+            display: inline;
+            background-color: #ddd;
+            color: #0e2f56;
+        }
+
+        .reserveListTot1 {
+            float: left;
+        }
+
+        .reserveListTot2 {
+            float: right;
+        }
+
+
+        /*--------------myList모달창-------------------------*/
+        #headerTitleArea {
+            text-align: center;
+            padding: 15px;
+            font-size: 180%;
+            font-weight: bold;
+            padding-top: 18px;
+        }
+
+        .table-bordered {
+            width: 100%;
+        }
+
+
+        .reserve-modal-th {
+            width: 30%;
+        }
+
+        .table-bordered {
+            width: 100%;
+            border: 1px solid #d0baa8;
+
+        }
+
+        .modal-reserve-container {
+            padding-top: 15%;
+            width: 150%;
+        }
+
+
+        .modal-reserve-container table>thead>tr>th {
+            background-color: #d0baa8;
+        }
+
+        .modal-reserve-container table>tbody>tr>td {
+            border: 1px solid #ddd;
+        }
+
+        .modal-content {
+            border: 5px solid #d0baa8;
+        }
+
+        #reserve_list {
+            padding: 0;
+        }
+        .reserve_List{
+        overflow:hidden;
+        display:inline;
+        }
+
+        .reserveListTot1 {
+            padding: 8px;
+            float:left;
+        }
+        .reserveListTot2{
+        	float:right;
+        }
+
+        .tab-content {
+            padding-bottom: 100px;
+        }
+
+        .reserveList>table>thead>tr {
+            background-color: #d0baa894
+        }
+
+        /*-----------------myList 모달창 끝-------------------*/
+
+        /*-------------------문의, 후기-----------------------*/
+        .myQnaThead,
+        .myReviewThead {
+            background-color: #d0baa894;
+            border-bottom: 1px solid #d0baa8;
+        }
+
+        .qnaListTit,
+        .reviewListTit {
+            margin-bottom: 50px;
+        }
+        
+
+        .join-t {
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+        }
+
+        .join-t h2 {
+            margin: 0 auto;
+            text-align: center;
+            width: 300px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d0baa8;
+        }
+
+        .join-inner {
+            padding: 6% 10%;
+            width: 70%;
+            background-color: #d0baa894;
+            box-shadow: 0px 8px 16px rgb(0, 0, 0, 0.1);
+            margin-left: auto;
+            margin-right: auto;
+            float: none;
+            margin-bottom: 100px;
+        }
+
+        .inner label {
+            display: block;
+            font-size: 13px;
+            padding-left: 5px;
+        }
+
+        .inner-id,
+        .inner-addr {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .inner .inid,
+        .inner .inzip {
+            display: block;
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            float: left;
+        }
+
+        .inner .inid {
+            width: 100%
+        }
+
+        .inner .inzip {
+            width: 78%;
+        }
+
+
+        .inner-addr-btn button {
+            width: 22%;
+            padding: 8px 5px;
+            background-color: #d0baa8;
+            float: left;
+        }
+
+        .inner .in {
+            display: block;
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 20px;
+        }
+
+        .td03 {
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            width: 17%;
+        }
+
+        .td3 {
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            width: 20%;
+        }
+
+        .td4 {
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            width: 40%;
+        }
+
+        .td5 {
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            width: 18%;
+        }
+
+        .join-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px 5px;
+            background-color: #d0baa8;
+        }
+
+        .btn-cl {
+            width: 40%;
+            margin: 0 auto;
+            padding-bottom: 60px;
+        }
+
+        .inner span {
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 5%;
+        }
+        
+        .update-btn, .delete-btn {
+            display: block;
+            margin-top: 20px;
+            width: 35%;
+            padding: 12px 5px;
+            background-color: #d0baa8;
+            float: left;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .update-btn {
+            margin-right: 20px;
+        }
+        
+        .delete-btn {
+            margin-left: 20px;
+        }
+        
+        .YorN {
+            display: block;
+             height: 15px;
+             float: left;
+             box-sizing: border-box; 
+        }
+        
+        /*-------------문의, 후기 style 끝----------------*/
+	
+/*이미지 사이즈*/
+         .secret {
+             display: block;
+             height: 15px;
+             float: left;
+             margin-right: 5px;
+             box-sizing: border-box; 
+         }
+         
+         
+         
+         /* 테이블 설정 */
+         .table{
+             border-top: 1px solid #d0baa8;
+            border-bottom: 1px solid #d0baa8;
+         }
+         .reviewThead{
+             background-color: #d0baa894;
+            border-bottom: 1px solid #d0baa8;
+         }
+         
+         /* 검색창 설정 */
+         .searchDiv{
+             overflow: hidden;
+         }
+         .search{
+             float: right;
+         }
+         .searchDiv #sel1{
+             width: 110px;
+             margin-bottom: 10px;
+             border-radius: 0;
+         }
+         .searchDiv input{
+             width: 25%;
+             border: 1px solid #ccc;
+             padding: 6px 0;
+             border-radius: 0;
+         }
+         
+         /* 페이징 */
+         .pagination{
+             padding:15px;
+             margin: 0 auto;
+             float: none;
+             text-align: center;
+             overflow: hidden;
+             box-sizing: border-box;
+         }
+         .pagination li > a{
+             border-radius: 0;
+             color:#755c31;
+             border-color: #777;
+         }
+         .searchDiv .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+         }
+         .pagination > .active > a{
+             background-color: #d0baa8;
+             border-color: #a08d7d;
+         }
+         .pagination > li:last-child > a,
+         .pagination > li:last-child > span,.pagination > li:first-child > a,
+         .pagination > li:first-child > span,
+         .pagination > li > a{
+             border-color :#a08d7d;
+             border-radius: 0;
+         }
+        .pager .btn-info{
+            background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+            float: right;
+            margin-right: 15px;
+        }
+        .btn{
+            border-radius: 0;
+        }
+         
+         /* 타이틀 설정 */
+        .titlebox{
+            text-align: center;
+            height: 70px;
+            line-height: 70px;
+            margin: 40px auto;
+            border-bottom: 2px solid #d0baa8;
+        }
+        .titleSapn{
+            display: inline-block;
+            color: #555;
+            margin-top: 20px;
+        }
+        .titleSapn a{
+            font-size: 15px;
+            color: #555;
+        }
+         
+         .titlebox p{
+            font-size: 25px;
+            font-weight: bold;
+        }
+         
+        /* 리뷰테이블 설정*/ 
+        .reviewSapn{
+            font-weight: bold;
+        }
+        
+        .review{
+            margin-top: 50px;
+            margin-bottom: 200px;
+        }
+         
+         #collectTable {
+             table-layout: fixed;
+         }
+        
+        .reviewTable .reviewT{
+            text-align: center;
+            width:80px;
+            vertical-align: middle;
+            background-color: #d0baa8;
+            font-weight: bold;
+            color:#67605a;
+        }
+        .reviewTable .form-control{
+            display: inline;
+            border-radius: 0;
+            height: auto;
+            line-height: normal;
+        }
+        .reviewTable #title{
+            width: 40%;
+        }
+        .reviewTable #content{
+            width: 100%;
+        }
+        .reviewTable .form-control:focus{
+            -webkit-box-shadow:none;
+            box-shadow: none;
+            border-color: #d0baa8;
+        }
+         
+         #newPw {
+             display: inline-block;
+             border-bottom: 2px solid #d0baa8;
+             width: 60%;
+             text-align: center;
+             float: left;
+         }
+         
+         /* ??? */
+         	#reserveAdult, #reserveKid, #reserveBaby{
+			width:20px;
+		}
+		
+		#roomType, #bedType{
+			width:100px;
+			display:inline";
+		}
+		
+		.reviewModal-body{
+           padding:5px 15px;
+        }
+		.detailDate{
+        	float:right;
+        }
+        .close{
+        	float:right;
+        }
+	    .starR{
+       	 	color:#eac716;
+        }
+        
+        .modalContent{
+        	text-align:center;
+        }
+        .detailValue{
+        	text-align:left;
+        }
+		.fileleft >img {
+			width:350px;
+		}
+		
+		.reviewModal-content{
+			border: 5px solid #d0baa8;
+		}
+		.modal-header{
+			padding: 10px 15px;
+		}
+		.contentRight{
+           float:right; 
+           margin-top:10px;
+        }
+        .row .btn-info{
+          background-color: #d0baa8;
+            border-color: #d0baa8;
+            color:#6d6d6d;
+            float:right;
+            margin-bottom:5px;
+       }
+       .modalContent  div{
+          padding-bottom: 9.5px;
+          
+       }
+       .fileleft{
+           float:left; 
+           padding:9.5px 0px;
+        }
+         
+    </style>

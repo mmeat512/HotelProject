@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hotel.qna.mapper.QnaReplyMapper">
+		<insert id="regist">
+			insert into qnareply (qrbno, qrnum, qrid, qrcontent)
+			 values (#{qrBno}, qrnum.nextval,#{qrId}, #{qrContent})
+		</insert>
+	
+	<!-- 더보기 목록 -->
+	<select id="getReply" resultType="QnaReplyVO">
+		<![CDATA[
+		select * from(select rownum as rn,
+		qrNum,qrBno,qrContent,qrId,qrDate from (
+		select * from qnareply where qrbno = #{qrBno} order by qrNum desc))
+		where rn>(#{cri.pageNum}-1)*#{cri.amount} and rn<=#{cri.pageNum}*#{cri.amount}
+		]]>
+	</select>
+
+	<select id="getTotal" resultType="int">
+		select count(*) as replyCount from qnareply where qrBno = #{qrBno}
+	</select>
+	
+	<select id="checkId" resultType="QnaReplyVO">
+		select qrId from qnareply where qrnum = #{qrNum}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="delete">
+		delete from qnareply where qrNum = #{qrNum}
+	</delete>
+	
+	<!-- 댓글 수정 -->
+	<update id="update">
+		update qnareply set qrcontent=#{qrContent} where qrNum=#{qrNum}
+	</update>
+	
+	</mapper>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.hotel.admin.mapper.AdminMapper">
+		
+		<insert id="roomInsert">
+			insert into hotel(hotelName,hotelName2,hotelcontent,hotelloca,hotelpeople,hotelsize,hotelbed,hotelview,hotelcheckin,hotelcheckout,hotelprice,hotelfileloca,hotelfilename,hotelfilerealname,hotelfileuploadpath)
+			values (#{hotelName},#{hotelName2},#{hotelContent},#{hotelLoca},#{hotelPeople},#{hotelsize},#{hotelBed},#{hotelView},#{hotelCheckin},#{hotelCheckout},#{hotelPrice},#{hotelfileLoca},#{hotelfilename},#{hotelfileRealname},#{hotelfileUploadpath})
+		</insert>
+		
+		<select id="roomgetList" resultType="HotelVO">
+			select * from hotel
+		</select>
+		
+		<select id="roomgetInfo" resultType="HotelVO">
+			select * from hotel where hotelName=#{hotelName}
+		</select>
+		
+		<insert id="specialInsert">
+			insert into specialintro(specialname,specialcontent,specialfileloca,specialfilename,specialfilerealname,specialfileuploadpath)
+			values (#{specialName},#{specialContent},#{specialfileloca},#{specialfilename},#{specialfilerealname},#{specialfileuploadpath})
+		</insert>
+		
+		<select id="specialgetList" resultType="SpecialIntVO">
+			select * from specialintro
+		</select>		
+		
+		<select id="SpecialgetInfo" resultType="SpecialIntVO">
+			select * from specialintro where specialname=#{specialName}
+		</select>
+		
+		<update id="specialUpdate">
+			update specialintro set specialcontent=#{specialContent} where specialname=#{specialName}
+		</update>
+		
+		<update id="roomUpdate">
+			update hotel set hotelcontent=#{hotelContent},hotelloca=#{hotelLoca},hotelpeople=#{hotelPeople},hotelsize=#{hotelsize},hotelbed=#{hotelBed},hotelview=#{hotelView},hotelprice=#{hotelPrice},hotelcheckin=#{hotelCheckin},hotelcheckout=#{hotelCheckout} where hotelName=#{hotelName}
+		</update>
+		
+		<delete id="roomDelete">
+			delete from hotel where hotelName=#{hotelName}
+		</delete>
+		
+		<delete id="specialDelete">
+			delete from specialintro where specialName=#{specialName}
+		</delete>
+		
+		<select id="reservegetList" resultType="ReserveVO">
+			select * from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reserve where staydate >= (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL) ) where
+					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약상태'">reservestate like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '객실정보'">roomtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '침대정보'">bedtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크인'">reservecheckin like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크아웃'">reservecheckout like '%'||#{searchName}||'%'</if>
+					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
+			UNION
+			select * from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reservedelete where reservecheckin >= (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL)) where
+					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약상태'">reservestate like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '객실정보'">roomtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '침대정보'">bedtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크인'">reservecheckin like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크아웃'">reservecheckout like '%'||#{searchName}||'%'</if>
+					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
+			
+		</select>
+		
+		<select id="RoomgetList" resultType="ReserveVO">
+			select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reserve where reservestate='pay' AND
+			
+					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약상태'">reservestate like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '객실정보'">roomtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '침대정보'">bedtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크인'">reservecheckin like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크아웃'">reservecheckout like '%'||#{searchName}||'%'</if>
+					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
+			
+		</select>
+		
+		
+		<select id="reservemodal" resultType="ReserveVO">
+	 select re.*,reserveUser.* 
+		from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reserveadult,reservekid,reservebaby,reservestate,TO_CHAR(reservedate, 'YYYY-MM-DD') as reservedate,reserveRequire,hotelprice
+	            from reserve
+	               where reserveNum=#{reserveNum}) re  LEft outer join reserveuser  on reserveuser.reservenum = re.reservenum
+	              
+	              UNION
+	              
+	  select re.*,reserveUser.* 
+		from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reserveadult,reservekid,reservebaby,reservestate,reservedate,reserveRequire,hotelprice
+	            from reserveDelete
+	               where reserveNum=#{reserveNum}) re  LEft outer join reserveuser  on reserveuser.reservenum = re.reservenum
+		</select>
+		
+		<update id="reserveUpdate">
+			update reserve set reserveAdult=#{reserveAdult},reserveKid=#{reserveKid},reserveBaby=#{reserveBaby},reserveRequire=#{reserveRequire} where reserveNum=#{reserveNum}
+		</update>
+		
+		<delete id="reserveDelete">
+			delete from reserve where reserveNum=#{reserveNum}	
+		</delete>
+		
+		<insert id="deleteInsert">
+			insert into reserveDelete(roomNum,roomType,bedType,reserveDate,deletedate,reserveCheckin,reserveCheckout,userId,reserveAdult,reserveKid,reserveBaby,reserveRequire,reserveNum,reserveState)
+			values(#{roomNum},#{roomType},#{bedType},#{reserveDate},sysdate,#{reserveCheckin},#{reserveCheckout},#{userId},#{reserveAdult},#{reserveKid},#{reserveBaby},#{reserveRequire},#{reserveNum},#{reserveState})
+		</insert>
+		
+		<update id="deleteState">
+			update reservedelete set reservestate='delete'
+		</update>
+		
+		<select id="totalgetList" resultType="ReserveVO">
+		<!-- select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reserve -->		
+		 <![CDATA[
+				select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reserve where
+			]]>	
+					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약상태'">reservestate like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '객실정보'">roomtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '침대정보'">bedtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크인'">reservecheckin like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크아웃'">reservecheckout like '%'||#{searchName}||'%'</if>
+					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
+		 	  <![CDATA[
+					UNION
+				select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reservedelete where
+			]]>
+					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '예약상태'">reservestate like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '객실정보'">roomtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '침대정보'">bedtype like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크인'">reservecheckin like '%'||#{searchName}||'%'</if>
+					<if test="searchType == '체크아웃'">reservecheckout like '%'||#{searchName}||'%'</if>
+					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
+			
+		</select>
+		
+		<update id="reserveState">
+			<![CDATA[
+				update reserve set reservestate ='past' where reservecheckout <(SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL)
+			]]>
+		</update>
+		
+		<select id="selectgetList" resultType="RoomVO">
+			<![CDATA[
+				select roomnum,roomtype,bedtype from room where roomnum not in (select DISTINCT roomnum 
+					from reserve where (staydate >= #{reserveCheckin} and staydate <= #{reserveCheckout})and reserve.reservecheckout != #{reserveCheckin} and reserve.reservecheckin != #{reserveCheckout}  and reservestate != 'pay') and roomtype=#{roomType} and bedtype=#{bedType} order by roomnum asc
+			
+			]]>
+				 
+		</select> 
+		
+		<update id="roomSel">
+			update reserve set roomnum=#{roomNum},reservestate='now' where reserveNum=#{reserveNum}
+		</update>
+		
+		
+	</mapper>
