@@ -325,8 +325,8 @@
                      var length = data[i].hotelName.length;
                      if(data[i].hotelName.includes('Standard')){
                         data[i].hotelName = data[i].hotelName.substring(0,index)+data[i].hotelName.substring(lastIndex,length);
-                        data[i].hotelsize = "26㎡~"+data[i].hotelsize;
-                        data[i].hotelBed = "더블/트윈/"+data[i].hotelBed;
+                        data[i].hotelsize = "26㎡~42㎡";
+                        data[i].hotelBed = "더블/트윈/패밀리트윈";
                      }
                        str += "<div class='"+data[i].hotelName+"'>";
                           str += "<div class='col-xs-12 reserveSearch'>";
