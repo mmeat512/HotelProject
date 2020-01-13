@@ -208,7 +208,7 @@
         <div class="container">
             <div class="row">
                <div class="col-xs-12 hotel-title">
-                    <h1 class="ht1">호텔 소개</h1>
+                    <h1 class="ht1">더 벤자민 호텔 소개</h1>
                </div>
                <div class="col-xs-12 hotel-info">
                    <div class="col-xs-12 col-md-5 hotel-left">
@@ -257,6 +257,31 @@
     </section>
     
    <jsp:include page="include/footer.jsp"></jsp:include>
+
+	<script>
+	$(document).ready(function(){
+			reserveState();//예약상태변경
+	});
+	
+	function reserveState(){
+		$.ajax({
+			type:"PUT",
+			url:"reserveState",
+			contentType:"application/json; charset=utf-8",
+			success:function(result){
+				if(result){ //상태수정성공
+					console.log("상태수정성공");
+				}else{//상태수정실패
+					console.log("상태수정실패");
+				}
+			},
+			error:function(status){
+				alert("다시 시도해 주세요(예약상태): "+status);
+			}
+			
+		})
+	}
+	</script>
 
     <!--검색창 물음표-->
         <script>
@@ -343,10 +368,13 @@
     
     <!-- 관리자 접근제한 -->
     <script>
+    $(document).ready(function(){
     	var msg = '${msg}';
     	if(msg != ''){
     		alert(msg);
     	}
+    	
+    })
     </script>
 </body>
 

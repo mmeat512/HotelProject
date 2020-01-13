@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/admin.css">
  	<style>
- 		input, select{
+ 		#reserveAdult,#reserveKid,#reserveBaby,#reserveRequire{
  			border:1px solid #777;
  		}
  		#tdbbt{

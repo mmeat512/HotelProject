@@ -288,6 +288,10 @@
     					str +="<td>"+data[i].reserveCheckin+"~"+data[i].reserveCheckout+"</td>";
     					if(data[i].reserveState == 'now'){
 	    					str +="<td>예약완료</td>";
+    					}else if(data[i].reserveState == 'past'){
+    						str +="<td>이용완료</td>";
+    					}else if(data[i].reserveState == 'pay'){
+    						str +="<td>결제완료</td>";
     					}else{
     						str +="<td>예약취소</td>";
     					}
@@ -324,19 +328,28 @@
 				
 				str += "<form action='reserveUpdate' id='regForm' name='regForm' method='post'>";
 				str += "<tr>";
+				str += "<td>객실 번호</td>";
+				str += "<td><input type='text' id='roomNum' name='roomNum' value='"+roomNum+"' readonly></td>";
+				str += "</tr>";
+				str += "<tr>";
 				str += "<td>예약자</td>";
 				str += "<td><input type='text' id='userId' name='userId' value='"+data.userId+"' readonly></td>";
 				str += "</tr>";
 				str += "<tr>";
 				str += "<td>예약 상태</td>";
-				str += "<td><input type='text' value='예약 완료' readonly></td>";
+				if(data.reserveState == 'now'){
+					str +="<td><input type='text' value='예약완료' readonly></td>";
+				}else if(data.reserveState == 'past'){
+					str +="<td><input type='text' value='이용완료' readonly></td>";
+				}else if(data.reserveState == 'pay'){
+					str +="<td><input type='text' value='결제완료' readonly></td>";
+				}else{
+					str +="<td><input type='text' value='예약취소' readonly></td>";
+				}
 				str += "</tr>";
 				str += "<tr>";
 				str += "<td>예약 번호</td>";
 				str += "<td><input type='text' value='"+data.reserveNum+"' readonly id='reserveNum' name='reserveNum'></td>";
-				str += "</tr>";
-				str += "<td>객실 번호</td>";
-				str += "<td><input type='text' id='roomNum' name='roomNum' value='"+roomNum+"' readonly></td>";
 				str += "</tr>";
 				str += "<tr>";
 				str += "<td>체크인</td>";

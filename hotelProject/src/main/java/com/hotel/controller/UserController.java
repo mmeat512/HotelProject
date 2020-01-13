@@ -170,13 +170,13 @@ public class UserController {
 		return "users/userMypage";
 	}
 
-	// 로그아웃
-	@RequestMapping("/userLogout")
-	public String userLogout(HttpSession session, Model model) {
-		session.invalidate();
-		model.addAttribute("msg", "로그아웃되었습니다.");
-		return "home";
-	}
+	//로그아웃
+	   @RequestMapping("/userLogout")
+	   public String userLogout(HttpSession session,RedirectAttributes RA) {
+		   session.invalidate();
+		   RA.addFlashAttribute("msg", "로그아웃되었습니다.");
+		   return "redirect:/"; 
+	   }
 
 	// 마이페이지 예약 상세보기
 	@RequestMapping("/userReserveDetail/{reserveNum}")

@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/admin.css">
  	<style>
- 		input, select{
- 			border:1px solid #777;
- 		}
+	 	#reserveAdult,#reserveKid,#reserveBaby,#reserveRequire{
+	 			border:1px solid #777;
+	 		}
  		#tdbbt{
  			padding: 0px;
  			vertical-align: center;
@@ -110,10 +110,6 @@
 		                            <option>더블</option>
 		                            <option>트윈</option>
 	                         	</select>
-	                         	<select class="form-control search s2" id="searchName" name="searchName" style="display: none;">
-		                            <option value="now">예약완료</option>
-		                            <option value="delete">예약취소</option>
-	                         	</select>
 	                         	<input type="text" class="search s3" name="searchName" id="searchName">
 	                         	<input type="hidden" value="searchName" class="s5">
 	                           	<select class="form-control search" id="sel1" name="searchType" onChange='javascript:change(this);'>
@@ -121,7 +117,6 @@
 		                            <option value="예약자명">예약자명</option>
 		                            <option value="객실정보">객실정보</option>
 		                            <option value="침대정보">침대정보</option>
-		                            <option value="예약상태">예약상태</option>
 		                            <option value="체크인">체크인</option>
 		                            <option value="체크아웃">체크아웃</option>
 	                         	</select>
