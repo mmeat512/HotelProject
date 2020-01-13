@@ -85,68 +85,74 @@
             </div>
         </div>
 
-        <!--객실검색-->
+    <!-- 객실검색 -->
         <div class="container">
            <div class="row">
+                <form action="reserve/reserveSearchForm" method="post" name="regForm" id="regForm">
                 <div class="col-xs-12 reserve">
                    <div class="col-md-5 left">
                     <ul class="check">
                         <li><strong>체크인</strong></li>
-                        <li class="checkDate"><input type="text" class="selector"></li>
+                        <li class="checkDate"><input type="text" class="selector" name="reserveCheckin" id="checkIn"></li>
                     </ul>
                     <ul class="check">
                         <li><strong>체크아웃</strong></li>
-                        <li class="checkDate"><input type="text" class="selector"></li>
+                        <li class="checkDate"><input type="text" class="selector" name="reserveCheckout" id="checkOut"></li>
                     </ul>
                     </div>
                    <div class="col-xs-12 col-md-5 left">
                         <ul class="sel">
                             <li><strong>객실</strong></li>
-                            <select class="form-control" id="sel1">
+                            <li><select class="form-control" id="sel1" name="room">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                             </select>
+                            </li>
                         </ul>
                         <ul class="sel">
                             <li><strong>성인</strong></li>
-                              <select class="form-control" id="sel1">
+                            <li><select class="form-control" id="sel1" name="reserveAdult">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                               </select>
+                            </li>  
                         </ul>
                         <ul class="sel">
                             <li><strong>어린이 <span class="glyphicon glyphicon-question-sign childSel">
                                <span class="hidden">안내</span>
                                 <span class="child">37개월 이상~만 12세 이하</span>
                             </span></strong></li>
-                            <select class="form-control" id="sel1">
+                            <li><select class="form-control" id="sel1" name="reserveKid">
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                               </select>
+                            </li>  
                         </ul>
                         <ul class="sel">
                             <li><strong>유아 <span class="glyphicon glyphicon-question-sign kidsSel">               
                                 <span class="kids">36개월이하</span></span></strong></li>
-                            <select class="form-control" id="sel1">
+                            <li><select class="form-control" id="sel1" name="reserveBaby">
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                               </select>
+                            </li>  
                         </ul>                        
                     </div> 
                     <div class="col-xs-12 col-md-2 searchBtn">
                         <button type="button" class="btn btn-info" onclick="searchBtn()">검색</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 		
@@ -297,9 +303,25 @@
             $(".sel .kids").css("display","none");
         });
             
+        var date1 = new Date(); //전역변수 선언
+        
         /*날짜 선택 달력*/
-        $(".selector").flatpickr({
-            dateFormat: "Y. m. d. D"
+        calendar1 = 
+           $("#checkIn").flatpickr({
+           minDate : "today",
+            dateFormat: "Y. m. d. D", 
+            onChange : function(selectedDates, dateStr, instance) {
+                  calendar2.set("minDate", selectedDates[0]);
+                  $("#checkOut").val(calendar1.formatDate(selectedDates[0], "Y. m. d. D")); 
+               }
+            
+        });
+        
+        /* calendar2의 날짜 */
+        calendar2 = 
+        $("#checkOut").flatpickr({
+           minDate : "today",
+           dateFormat: "Y. m. d. D"
         });
             
         /*오늘 날짜*/
@@ -307,7 +329,11 @@
         var year = date.getFullYear();
         var month = date.getMonth()+1;
         var day = date.getDate();
-        var time = year+". "+month+". "+day+". "+getTodayLabel();
+        if(day<10) {
+        var time = year+". 0"+month+". 0"+day+". "+getTodayLabel();
+        } else {
+           var time = year+". 0"+month+". "+day+". "+getTodayLabel();
+        }
         
         function getTodayLabel() {
             var week = new Array('Sun', 'Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat');
@@ -320,7 +346,8 @@
         
         $(document).ready(function(){
             $(".selector").val(time);
-        })
+        });
+        
     
     </script>
     
@@ -375,6 +402,11 @@
     	}
     	
     })
+    </script>
+   <script>
+       function searchBtn(){
+          document.regForm.submit();
+       }
     </script>
 </body>
 
