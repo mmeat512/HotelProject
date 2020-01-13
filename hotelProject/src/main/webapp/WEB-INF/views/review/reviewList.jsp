@@ -469,7 +469,7 @@
   		}
 		if(userId == ''){
   			alert("로그인 후 이용가능합니다.");
-  			location.href='../users/userLogin';
+  			location.href='reviewLInter?reviewBno='+reviewBno;
   			return false;
   		}
 	  	$(this).attr("src","${pageContext.request.contextPath }/resources/img/like.png");

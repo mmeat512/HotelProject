@@ -60,20 +60,20 @@
                         <ul class="sel">
                             <li><strong>객실</strong>
                             <select class="form-control" id="room" class="sel1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                                <option ${room == 1 ? 'selected' : '' }>1</option>
+                                <option ${room == 2 ? 'selected' : '' }>2</option>
+                                <option ${room == 3 ? 'selected' : '' }>3</option>
+                                <option ${room == 4 ? 'selected' : '' }>4</option>
                             </select>
                             </li>
                         </ul>
                         <ul class="sel">
                             <li><strong>성인</strong>
                               <select class="form-control" id="adult" class="sel1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                                <option ${vo.reserveAdult == 1 ? 'selected' : '' }>1</option>
+                                <option ${vo.reserveAdult == 2 ? 'selected' : '' }>2</option>
+                                <option ${vo.reserveAdult == 3 ? 'selected' : '' }>3</option>
+                                <option ${vo.reserveAdult == 4 ? 'selected' : '' }>4</option>
                               </select>
                              </li>
                         </ul>
@@ -83,11 +83,11 @@
                                 <span class="child">37개월 이상~만 12세 이하</span>
                             </span></strong>
                             <select class="form-control" id="kid" class="sel1">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                                <option ${vo.reserveKid == 0 ? 'selected' : '' }>0</option>
+                                <option ${vo.reserveKid == 1 ? 'selected' : '' }>1</option>
+                                <option ${vo.reserveKid == 2 ? 'selected' : '' }>2</option>
+                                <option ${vo.reserveKid == 3 ? 'selected' : '' }>3</option>
+                                <option ${vo.reserveKid == 4 ? 'selected' : '' }>4</option>
                               </select>
                              </li>
                         </ul>
@@ -96,17 +96,17 @@
                                <span class="hidden">안내</span>
                                 <span class="kids">36개월이하</span></span></strong>
                             <select class="form-control" id="baby" class="sel1">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                                <option ${vo.reserveBaby == 0 ? 'selected' : '' }>0</option>
+                                <option ${vo.reserveBaby == 1 ? 'selected' : '' }>1</option>
+                                <option ${vo.reserveBaby == 2 ? 'selected' : '' }>2</option>
+                                <option ${vo.reserveBaby == 3 ? 'selected' : '' }>3</option>
+                                <option ${vo.reserveBaby == 4 ? 'selected' : '' }>4</option>
                               </select>
                             </li>
                         </ul>                        
                     </div> 
                     <div class="col-xs-12 col-md-2 searchBtn">
-                        <button type="button" class="btn btn-info reserveSearchBtn">　검색　</button>
+                        <button type="button" class="btn btn-info reserveSearchBtn" id="search" onclick="reserveSearchBtn()">　검색　</button>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,23 @@
     $(document).ready(function(){
         $(".selector").val(time);
     });
+    
     </script>
+    <script>
+      $(document).ready(function(){
+         var vo = '${vo}';
+         if(vo != ''){
+            var checkIn = '${vo.reserveCheckin}';
+            var checkOut = '${vo.reserveCheckout}';
+            console.log(checkIn);
+            console.log(checkOut);
+            calendar1.setDate(checkIn,false, "Y. m. d. D");
+            calendar2.setDate(checkOut,false, "Y. m. d. D");
+            $("#search").trigger("click");
+         }
+      })
+   
+   </script>
     
     <!--모달창 스크립트-->
     <script>
@@ -262,18 +278,6 @@
         });
     </script>
     
-    <!--검색 창 열기-->
-    <script>
-        $(".reserveSearchBtn").click(function(){
-            $(".searchResult").show();
-        });
-        
-        /* 예약확인화면으로 이동 */
-        $(".reserveBtn").click(function(){
-           location.href="reservePay";
-        });
-    </script>
-    
    <script>
         $(".sel .childSel").hover(function(){
           $(".sel .child").css("display","inline-block");
@@ -290,80 +294,171 @@
    
     <!-- 검색 하기-->
     <script>
-       $(".reserveSearchBtn").click(function(){
-          var checkin = $("#checkIn").val();
-          var checkout = $("#checkOut").val();
-          var adult = $("#adult option:selected").val();
-          var kid = $("#kid option:selected").val();
-          var baby = $("#baby option:selected").val();
-          console.log(checkin);
-          console.log(checkout);
-          console.log(adult);
-          console.log(kid);
-          console.log(baby);
-          var json = {"reserveCheckin":checkin , 
-                "reserveCheckout":checkout, 
-                "reserveAdult":adult, 
-                "reserveKid":kid, 
-                "reserveBaby":baby}
-          $.ajax({
-             type:"POST",
-             url:"reserveSearch",
-             data:JSON.stringify(json),
-             contentType:"application/json; charset=utf-8",
-             success:function(data){
-                var str = "";
-                console.log(data);
-                var arr = [];
-                for(var i = 0 ; i < data.length; i++){
-                   arr[i] = data[i].hotelName2;
-                   arr = uniqArr(arr);
-                   console.log(arr[2]);
-                  if(data[i].hotelName2 == arr[i]){
-                     var lastIndex = data[i].hotelName.lastIndexOf(" ");
-                     var index = data[i].hotelName.indexOf(" ");
-                     var length = data[i].hotelName.length;
-                     if(data[i].hotelName.includes('Standard')){
-                        data[i].hotelName = data[i].hotelName.substring(0,index)+data[i].hotelName.substring(lastIndex,length);
-                        data[i].hotelsize = "26㎡~42㎡";
-                        data[i].hotelBed = "더블/트윈/패밀리트윈";
-                     }
-                       str += "<div class='"+data[i].hotelName+"'>";
-                          str += "<div class='col-xs-12 reserveSearch'>";
-                          str += "<input type='hidden' value='"+data[i].hotelfileLoca+"' id='fileloca'>";
-                          str += "<input type='hidden' value='"+data[i].hotelfilename+"' id='filename'>";
-                          str += "<input type='hidden' value='"+data[i].hotelName+"' id='hotelname'>";
-                          str += "<ul class='col-sm-4'>";
-                          str += "<li><img src='../admin/view?fileLoca="+data[i].hotelfileLoca+"&filename="+data[i].hotelfilename+"&Name="+data[i].hotelName+"'></li>";
-                          str += "</ul>";
-                          str += "<ul class='col-sm-4'>";
-                          str += "<li class='roomName'>"+data[i].hotelName+"</li>";
-                          str += "<li>객실크기 : "+data[i].hotelsize+"㎡</li>";
-                          str += "<li>침대타입 : "+data[i].hotelBed+"</li>";
-                          str += "<li class='roomMore'><a href='"+data[i].hotelName+"' data-toggle='modal' class='moreDetail'>더보기</a></li>";
-                          str += "</ul>";
-                          str += "<ul class='col-sm-4 reserveSel'>";
-                          str += "<li class='reservePrice'>";
-                          str += "<div class='price'>"+data[i].hotelPrice*getDateDiff(checkin,checkout)+"원 ~</div>";
-                          str += "<div>"+getDateDiff(checkin,checkout)+" 박</div>";
-                          str += "</li>";
-                          str += "<li style='display: inline-block; '>";
-                          str += "<button type='button' class='btn btn-info resBtn'>예약하기 <span class='glyphicon glyphicon-chevron-down'></span></button>";                            
-                          str += "</li>";
-                          str += "</ul>";
-                          str += "</div>";
-                     str += searchDetail(data,i);
-                         str += "</div>";
-                  } 
-                }
-                $(".searchRoom").html(str);
-             },
-             error:function(status){
-                alert("다시시도해주세요"+status);
-             }
-          })
-          
-       })
+       function reserveSearchBtn(){
+           /* 날짜와 맞지 않으면 데이터 안보임 */
+           date = document.getElementsByClassName("selector");
+           var myCheckin = date[0].value.split(".");
+           var myCheckout = date[1].value.split(".");
+
+           if(myCheckin[0]>myCheckout[0]) {
+              alert("날짜 설정을 다시 확인해주세요.");
+            return false;
+           } else if(myCheckin[1]>myCheckout[1]) {
+              alert("날짜 설정을 다시 확인해주세요.");
+            return false;
+           } else if(myCheckin[2]>=myCheckout[2]) {
+              alert("날짜 설정을 다시 확인해주세요.");
+            return false;
+           }
+           $(".searchResult").show();
+          var vo = '${vo}';
+          if(vo == ''){
+               var checkin = $("#checkIn").val();
+               var checkout = $("#checkOut").val();
+               var adult = $("#adult option:selected").val();
+               var kid = $("#kid option:selected").val();
+               var baby = $("#baby option:selected").val();
+               console.log(checkin);
+               console.log(checkout);
+               console.log(adult);
+               console.log(kid);
+               console.log(baby);
+               var json = {"reserveCheckin":checkin , 
+                       "reserveCheckout":checkout, 
+                       "reserveAdult":adult, 
+                       "reserveKid":kid, 
+                       "reserveBaby":baby}
+               $.ajax({
+                    type:"POST",
+                    url:"reserveSearch",
+                    data:JSON.stringify(json),
+                    contentType:"application/json; charset=utf-8",
+                    success:function(data){
+                       var str = "";
+                       console.log(data);
+                       var arr = [];
+                       for(var i = 0 ; i < data.length; i++){
+                          arr[i] = data[i].hotelName2;
+                          arr = uniqArr(arr);
+                          console.log(arr[2]);
+                         if(data[i].hotelName2 == arr[i]){
+                            var lastIndex = data[i].hotelName.lastIndexOf(" ");
+                            var index = data[i].hotelName.indexOf(" ");
+                            var length = data[i].hotelName.length;
+                            if(data[i].hotelName.includes('Standard')){
+                               data[i].hotelName = data[i].hotelName.substring(0,index)+data[i].hotelName.substring(lastIndex,length);
+                               data[i].hotelsize = "26㎡~42㎡";
+                               data[i].hotelBed = "더블/트윈/패밀리트윈";
+                            }
+                              str += "<div class='"+data[i].hotelName+"'>";
+                                 str += "<div class='col-xs-12 reserveSearch'>";
+                                 str += "<input type='hidden' value='"+data[i].hotelfileLoca+"' id='fileloca'>";
+                                 str += "<input type='hidden' value='"+data[i].hotelfilename+"' id='filename'>";
+                                 str += "<input type='hidden' value='"+data[i].hotelName+"' id='hotelname'>";
+                                 str += "<ul class='col-sm-4'>";
+                                 str += "<li><img src='../admin/view?fileLoca="+data[i].hotelfileLoca+"&filename="+data[i].hotelfilename+"&Name="+data[i].hotelName+"'></li>";
+                                 str += "</ul>";
+                                 str += "<ul class='col-sm-4'>";
+                                 str += "<li class='roomName'>"+data[i].hotelName+"</li>";
+                                 str += "<li>객실크기 : "+data[i].hotelsize+"㎡</li>";
+                                 str += "<li>침대타입 : "+data[i].hotelBed+"</li>";
+                                 str += "<li class='roomMore'><a href='"+data[i].hotelName+"' data-toggle='modal' class='moreDetail'>더보기</a></li>";
+                                 str += "</ul>";
+                                 str += "<ul class='col-sm-4 reserveSel'>";
+                                 str += "<li class='reservePrice'>";
+                                 str += "<div class='price'>"+numberWithCommas(data[i].hotelPrice*getDateDiff(checkin,checkout))+"원 ~</div>";
+                                 str += "<div>"+getDateDiff(checkin,checkout)+" 박</div>";
+                                 str += "</li>";
+                                 str += "<li style='display: inline-block; '>";
+                                 str += "<button type='button' class='btn btn-info resBtn'>예약하기 <span class='glyphicon glyphicon-chevron-down'></span></button>";                            
+                                 str += "</li>";
+                                 str += "</ul>";
+                                 str += "</div>";
+                            str += searchDetail(data,i);
+                                str += "</div>";
+                         } 
+                       }
+                       $(".searchRoom").html(str);
+                    },
+                    error:function(status){
+                       alert("다시시도해주세요"+status);
+                    }
+                 })
+                 
+              }else{
+                     var checkin = '${vo.reserveCheckin}';
+                  var checkout = '${vo.reserveCheckout}';
+                  var adult = '${vo.reserveAdult}';
+                  var kid = '${vo.reserveKid}';
+                  var baby = '${vo.reserveBaby}';
+                  console.log(checkin);
+                  console.log(checkout);
+                  console.log(adult);
+                  console.log(kid);
+                  console.log(baby);
+                  var json = {"reserveCheckin":checkin , 
+                          "reserveCheckout":checkout, 
+                          "reserveAdult":adult, 
+                          "reserveKid":kid, 
+                          "reserveBaby":baby}
+                  $.ajax({
+                       type:"POST",
+                       url:"reserveSearch",
+                       data:JSON.stringify(json),
+                       contentType:"application/json; charset=utf-8",
+                       success:function(data){
+                          var str = "";
+                          console.log(data);
+                          var arr = [];
+                          for(var i = 0 ; i < data.length; i++){
+                             arr[i] = data[i].hotelName2;
+                             arr = uniqArr(arr);
+                             console.log(arr[2]);
+                            if(data[i].hotelName2 == arr[i]){
+                               var lastIndex = data[i].hotelName.lastIndexOf(" ");
+                               var index = data[i].hotelName.indexOf(" ");
+                               var length = data[i].hotelName.length;
+                               if(data[i].hotelName.includes('Standard')){
+                                  data[i].hotelName = data[i].hotelName.substring(0,index)+data[i].hotelName.substring(lastIndex,length);
+                                  data[i].hotelsize = "26㎡~42㎡";
+                                  data[i].hotelBed = "더블/트윈/패밀리트윈";
+                               }
+                                 str += "<div class='"+data[i].hotelName+"'>";
+                                    str += "<div class='col-xs-12 reserveSearch'>";
+                                    str += "<input type='hidden' value='"+data[i].hotelfileLoca+"' id='fileloca'>";
+                                    str += "<input type='hidden' value='"+data[i].hotelfilename+"' id='filename'>";
+                                    str += "<input type='hidden' value='"+data[i].hotelName+"' id='hotelname'>";
+                                    str += "<ul class='col-sm-4'>";
+                                    str += "<li><img src='../admin/view?fileLoca="+data[i].hotelfileLoca+"&filename="+data[i].hotelfilename+"&Name="+data[i].hotelName+"'></li>";
+                                    str += "</ul>";
+                                    str += "<ul class='col-sm-4'>";
+                                    str += "<li class='roomName'>"+data[i].hotelName+"</li>";
+                                    str += "<li>객실크기 : "+data[i].hotelsize+"㎡</li>";
+                                    str += "<li>침대타입 : "+data[i].hotelBed+"</li>";
+                                    str += "<li class='roomMore'><a href='"+data[i].hotelName+"' data-toggle='modal' class='moreDetail'>더보기</a></li>";
+                                    str += "</ul>";
+                                    str += "<ul class='col-sm-4 reserveSel'>";
+                                    str += "<li class='reservePrice'>";
+                                    str += "<div class='price'>"+numberWithCommas(data[i].hotelPrice*getDateDiff(checkin,checkout))+"원 ~</div>";
+                                    str += "<div>"+getDateDiff(checkin,checkout)+" 박</div>";
+                                    str += "</li>";
+                                    str += "<li style='display: inline-block; '>";
+                                    str += "<button type='button' class='btn btn-info resBtn'>예약하기 <span class='glyphicon glyphicon-chevron-down'></span></button>";                            
+                                    str += "</li>";
+                                    str += "</ul>";
+                                    str += "</div>";
+                               str += searchDetail(data,i);
+                                   str += "</div>";
+                            } 
+                          }
+                          $(".searchRoom").html(str);
+                       },
+                       error:function(status){
+                          alert("다시시도해주세요"+status);
+                       }
+                    })
+              }
+       }
     
        //중복값제거
           function uniqArr(arr) {
@@ -413,7 +508,7 @@
                      str += "<input type='hidden' value='"+data[c].roomType+"' id='roomType'>";
 
                      str += "<button type='button' class='btn btn-info reserveBtn'>예약하기</button>";
-                     str += "<strong class='detailPrice'>"+data[c].hotelPrice*getDateDiff(checkin,checkout)+" 원</strong>";
+                     str += "<strong class='detailPrice'>"+numberWithCommas(data[c].hotelPrice*getDateDiff(checkin,checkout))+" 원</strong>";
                      str += "</div>";
                      str += "</div>";
                      str += "</div>";
@@ -447,8 +542,9 @@
           
           //가격
           var hotelprice = $(this).parent("div").children("strong").html()
-          hotelprice = hotelprice.substring(0,hotelprice.lastIndexOf(" "));
-          
+          hotelprice = hotelprice.substring(0,hotelprice.lastIndexOf(" ")).replace(/,/g, "");
+          hotelprice = parseInt(hotelprice);
+          console.log(hotelprice);
           var detailArr = {"reserveCheckin":checkin,
                       "reserveCheckout":checkout,
                       "room":room,
@@ -607,13 +703,16 @@
                   $(".modal-content").html(str);
                 $("#myModal").modal("show");
              }
-             
-          
-          
           )
-          
                     
        })
+    </script>
+    
+    <!-- 가격 -->
+    <script>
+       function numberWithCommas(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
     </script>
     
 </body>

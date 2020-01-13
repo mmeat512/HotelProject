@@ -217,6 +217,11 @@ public class ReviewController {
 		return result;
 	}
 	
+	@RequestMapping("/reviewLInter")
+	   public String loginInterceptor() {
+	      return "redirect:/review/reviewList";
+	   }
+	
 
 	
 }

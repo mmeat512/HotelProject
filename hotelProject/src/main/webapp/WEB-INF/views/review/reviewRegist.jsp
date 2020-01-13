@@ -87,7 +87,7 @@
                       </table>
                         <div class="btnBox">
                           <button type="button" class="btn btn-info" onclick="reviewBtn()">등록하기</button>
-                          <button type="button" class="btn btn-default" onclick="reviewList">목록보기</button>
+                          <button type="button" class="btn btn-default" onclick="location.href='reviewList'">목록보기</button>
                         </div>
                     </form>
                 </div>

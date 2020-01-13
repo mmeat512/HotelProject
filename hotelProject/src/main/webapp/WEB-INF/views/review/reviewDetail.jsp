@@ -124,9 +124,9 @@
                         </tbody>
                       </table>
                         <div class="btnBox">
-                          <button type="button" class="btn btn-info" onclick="detailDel()">삭제하기</button>
-                          <button type="button" class="btn btn-default" onclick="detailMod()">수정하기</button>
-                          <button type="button" class="btn btn-primary" onclick="location.href='reviewList'">목록</button>
+						   <button type="button" class="btn btn-info" onclick="detailMod()">수정하기</button>
+                          <button type="button" class="btn btn-default" onclick="detailDel()">삭제하기</button>
+                           <button type="button" class="btn btn-primary" onclick="location.href='reviewList'">목록</button>
                         </div>
                     </form>
                 </div>

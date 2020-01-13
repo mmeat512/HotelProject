@@ -26,6 +26,8 @@
 				<mapping path="/users/userMypage"/>
 				<mapping path="/users/userReservePage"/>
 				<mapping path="/review/reviewRegist"/>
+				<mapping path="/reserve/reservePay"/>
+            	<mapping path="/review/reviewLInter"/>
 				<beans:ref bean="userInterceptor"/>
 			</interceptor>
 			<interceptor>
@@ -47,6 +49,7 @@
 			</interceptor>
 			<interceptor>
 				<mapping path="/review/reviewDetail"/>
+				<mapping path="/review/reviewRegist"/>
 				<beans:ref bean="ReviewBoardInterceptor"/>
 			</interceptor>
 			<interceptor>

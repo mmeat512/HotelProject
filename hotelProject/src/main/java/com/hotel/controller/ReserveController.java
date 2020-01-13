@@ -92,12 +92,12 @@ public class ReserveController {
 	
 	
 
-	   @RequestMapping("/reserveSearchForm")
-	   public String reserveSearchForm(@ModelAttribute("vo") ReserveVO vo,
-	                           @RequestParam("room") String room) {
-	      System.out.println(vo.toString());
-	      return "redirect:/reserve/reserveRoom";
-	   }
+		@RequestMapping("/reserveSearchForm")
+	    public String reserveSearchForm(@ModelAttribute("vo") ReserveVO vo,
+	                            @RequestParam("room") int room) {
+	       System.out.println(vo.toString());
+	       return "reserve/reserveRoom";
+	    }
 	   
 	   @RequestMapping("/reserveSearch")
 	   @ResponseBody
