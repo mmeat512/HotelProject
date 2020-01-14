@@ -46,7 +46,7 @@ create table hotel.users(
 );
 
 create table hotel.reviewboard(
-    reviewbno int not null AUTO_INCREMENT,
+    reviewbno int not null AUTO_INCREMENT primary key,
     reviewdatetime datetime DEFAULT CURRENT_TIMESTAMP ,
     reviewupdatetimedatetime datetime DEFAULT CURRENT_TIMESTAMP,
     reviewtitle varchar(50) not null,
@@ -84,8 +84,8 @@ create table hotel.qnaboard(
 
 
 create table hotel.qnareply(
-    qrbno int not null AUTO_INCREMENT,
-    qrnum int not null,
+    qrbno int not null,
+    qrnum int not null AUTO_INCREMENT,
     qrdatetime datetime default CURRENT_TIMESTAMP,
     qrid varchar(20) not null,
     qrcontent varchar(1000) not null,
@@ -94,8 +94,8 @@ create table hotel.qnareply(
 );
 
 create table hotel.reviewreply(
-    rbno int not null AUTO_INCREMENT,
-    rnum int not null,
+    rbno int not null,
+    rnum int not null AUTO_INCREMENT,
     rdatetime datetime default CURRENT_TIMESTAMP,
     rcontent varchar(1000) not null,
     rid varchar(20),
