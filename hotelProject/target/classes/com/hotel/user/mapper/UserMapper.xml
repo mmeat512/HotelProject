@@ -74,7 +74,7 @@ select re.*,reserveuser.* from(select DISTINCT roomnum,roomtype,bedtype,reservec
 		</delete>
 		
 		<insert id="insertReserveDelete">
-			insert into reserveDelete values (#{roomNum},#{roomType}, #{bedType}, #{reserveDate},#{reserveCheckin},#{reserveCheckout}, #{userId}, #{reserveAdult}, #{reserveKid}, #{reserveBaby}, #{reserveRequire}, #{reserveNum}, #{reserveState},#{hotelPrice})
+			insert into reserveDelete values (#{roomNum},#{roomType}, #{bedType},#{hotelPrice}, #{reserveDate},sysdate,#{reserveCheckin},#{reserveCheckout}, #{userId}, #{reserveAdult}, #{reserveKid}, #{reserveBaby}, #{reserveRequire}, #{reserveNum}, #{reserveState})
 		</insert>
 		
 		<!-- 마이페이지 내후기 -->

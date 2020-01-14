@@ -46,7 +46,7 @@ create table hotel.users(
 );
 
 create table hotel.reviewboard(
-    reviewbno int not null,
+    reviewbno int not null AUTO_INCREMENT primary key,
     reviewdatetime datetime DEFAULT CURRENT_TIMESTAMP ,
     reviewupdatetimedatetime datetime DEFAULT CURRENT_TIMESTAMP,
     reviewtitle varchar(50) not null,
@@ -62,7 +62,7 @@ create table hotel.reviewboard(
 );
 
 create table hotel.qnaboard(
-    qnabno int not null,
+    qnabno int not null AUTO_INCREMENT,
     qnaId varchar(50),
     qnadatetime datetime DEFAULT CURRENT_TIMESTAMP,
     qnatitle varchar(50) not null,
@@ -85,7 +85,7 @@ create table hotel.qnaboard(
 
 create table hotel.qnareply(
     qrbno int not null,
-    qrnum int not null,
+    qrnum int not null AUTO_INCREMENT,
     qrdatetime datetime default CURRENT_TIMESTAMP,
     qrid varchar(20) not null,
     qrcontent varchar(1000) not null,
@@ -95,7 +95,7 @@ create table hotel.qnareply(
 
 create table hotel.reviewreply(
     rbno int not null,
-    rnum int not null,
+    rnum int not null AUTO_INCREMENT,
     rdatetime datetime default CURRENT_TIMESTAMP,
     rcontent varchar(1000) not null,
     rid varchar(20),
@@ -148,7 +148,7 @@ create table hotel.reserve(
 );
 
 create table hotel.room(
-    roomnum int not null,
+    roomnum int not null AUTO_INCREMENT,
     roomtype varchar(50) not null,
     bedtype varchar(50) not null,
     peoplecnt int not null,
@@ -161,3 +161,6 @@ CREATE table hotel.boardlike(
     likehit int DEFAULT 0 not null,
     hitid VARCHAR(50) not null
 );
+alter table hotel.room AUTO_INCREMENT=101;
+alter table hotel.room AUTO_INCREMENT=201;
+alter table hotel.room AUTO_INCREMENT=301;

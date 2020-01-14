@@ -62,8 +62,6 @@
                             <select class="form-control" id="room" class="sel1">
                                 <option ${room == 1 ? 'selected' : '' }>1</option>
                                 <option ${room == 2 ? 'selected' : '' }>2</option>
-                                <option ${room == 3 ? 'selected' : '' }>3</option>
-                                <option ${room == 4 ? 'selected' : '' }>4</option>
                             </select>
                             </li>
                         </ul>
@@ -522,6 +520,12 @@
     <!-- 예약하기 -->
     <script>
        $(".searchRoom").on("click",".reserveBtn",function(){
+    	   var userId = '${sessionScope.userId}';
+    	   if(userId == ''){
+    		   alert("로그인 후 이용가능합니다.");
+    		   location.href='../users/userLogin';
+    		   return false;
+    	   }
           var checkin = $("#checkIn").val();
           var checkout = $("#checkOut").val();
           var room = $("#room option:selected").val();

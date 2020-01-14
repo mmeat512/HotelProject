@@ -14,7 +14,7 @@ public class UploadPath {
 		return day;
 	}
 	public static String uploadPath() {
-		return "D:\\Jeehye_SpringFramework\\upload\\";
+		return "D:\\hotelProject\\upload\\";
 	}
 	
 	public static void roomFolder() {

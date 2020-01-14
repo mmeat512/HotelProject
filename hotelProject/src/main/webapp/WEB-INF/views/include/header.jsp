@@ -58,7 +58,7 @@
                                        		</c:when>
                                        		<c:otherwise>
                                        			<c:if test="${sessionScope.userId eq 'admin' }">
-                                        			<li><a href="${pageContext.request.contextPath }/admin/adminMain">관리자페이지</a></li><!--관리자 아이디 세션일 경우 -->
+                                        			<li><a href="${pageContext.request.contextPath }/admin/adminReserve">관리자페이지</a></li><!--관리자 아이디 세션일 경우 -->
                                     			</c:if>
                                        			<li><a href="${pageContext.request.contextPath }/users/userLogout">로그아웃</a></li>
                                        			<li><a href="${pageContext.request.contextPath }/users/userMypage">마이페이지</a></li><!--아이디 세션이 존재할 경우-->

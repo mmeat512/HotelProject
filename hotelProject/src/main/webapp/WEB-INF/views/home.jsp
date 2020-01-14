@@ -20,8 +20,6 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!--개인 디자인-->
     <link href="${pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet">
-    <!-- 지도api -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9615897128d95c4b696b6f88784a9bf0"></script>
     <style type="text/css">
        section{
        margin-top:100px;}
@@ -106,8 +104,6 @@
                             <li><select class="form-control" id="sel1" name="room">
                                 <option>1</option>
                                 <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
                             </select>
                             </li>
                         </ul>
@@ -239,8 +235,8 @@
                            </div>
                            </div>
                    </div>
-                   <div class="col-xs-12 col-md-7 hotel-right">
-                       <div id="map" style="width:100%;height:400px;"></div>
+                    <div class="col-xs-12 col-md-7 hotel-right">
+                          <img src="resources/img/standardDeluxe2.jpg">
                    </div>
                </div>
                 
@@ -276,9 +272,9 @@
 			contentType:"application/json; charset=utf-8",
 			success:function(result){
 				if(result){ //상태수정성공
-					console.log("상태수정성공");
+					//console.log("상태수정성공");
 				}else{//상태수정실패
-					console.log("상태수정실패");
+					//console.log("상태수정실패");
 				}
 			},
 			error:function(status){
