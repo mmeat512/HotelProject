@@ -6,8 +6,8 @@
 	<mapper namespace="com.hotel.review.mapper.ReviewBoardMapper">
 		<!-- 이용후기 등록 -->
 		<insert id="reviewRegist">
-			insert into reviewboard values(REVIEWBNO.nextval,sysdate,sysdate,#{reviewTitle},#{reviewContent},#{reviewId},
-									#{reviewRate},#{reviewfilename},#{reviewfilerealname},#{reviewfileloca},#{reviewfileUploadpath},#{reviewRoom},0)
+			insert into reviewboard values(REVIEWBNO.nextval,sysdate,#{reviewTitle},#{reviewContent},#{reviewId},
+									#{reviewRate},#{reviewfilename},#{reviewfilerealname},#{reviewfileloca},#{reviewfileUploadpath},sysdate,#{reviewRoom},0)
 		</insert>
 		<!-- 이용후기 리스트 -->
 		<select id="getList" resultType="ReviewBoardVO">

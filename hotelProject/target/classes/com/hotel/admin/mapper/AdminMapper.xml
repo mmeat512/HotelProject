@@ -48,7 +48,7 @@
 		</delete>
 		
 		<select id="reservegetList" resultType="ReserveVO">
-			select * from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reserve where staydate >= (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL) ) where
+			select * from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reserve where staydate >= (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL) ) where  reservestate != 'pay' and
 					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '예약상태'">reservestate like '%'||#{searchName}||'%'</if>
@@ -58,7 +58,7 @@
 					<if test="searchType == '체크아웃'">reservecheckout like '%'||#{searchName}||'%'</if>
 					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
 			UNION
-			select * from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reservedelete where reservecheckin >= (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL)) where
+			select * from(select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reservedelete where reservecheckin >= (SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL)) where  reservestate != 'pay' and
 					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '예약상태'">reservestate like '%'||#{searchName}||'%'</if>
@@ -71,7 +71,7 @@
 		</select>
 		
 		<select id="RoomgetList" resultType="ReserveVO">
-			select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate from reserve where reservestate='pay' AND
+			select DISTINCT roomnum,roomtype,bedtype,reservecheckin,reservecheckout,userid,reservenum,reservestate,reserveDate from reserve where reservestate='pay' AND
 			
 					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
@@ -81,7 +81,7 @@
 					<if test="searchType == '체크인'">reservecheckin like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '체크아웃'">reservecheckout like '%'||#{searchName}||'%'</if>
 					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
-			
+			order by reserveDate desc
 		</select>
 		
 		
@@ -119,7 +119,7 @@
 		<select id="totalgetList" resultType="ReserveVO">
 		<!-- select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reserve -->		
 		 <![CDATA[
-				select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reserve where
+				select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reserve where reservestate!= 'pay' and
 			]]>	
 					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>
@@ -131,7 +131,7 @@
 					<if test="searchName == 'searchName' or searchName == ''">1=1</if>
 		 	  <![CDATA[
 					UNION
-				select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reservedelete where
+				select DISTINCT reservenum,userid,roomtype,bedtype,reservecheckin,reservecheckout,reservestate from reservedelete where reservestate!= 'pay' and
 			]]>
 					<if test="searchType == '예약번호'">reservenum like '%'||#{searchName}||'%'</if>
 					<if test="searchType == '예약자명'">userid like '%'||#{searchName}||'%'</if>

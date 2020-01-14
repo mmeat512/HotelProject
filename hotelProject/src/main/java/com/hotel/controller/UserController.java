@@ -111,12 +111,13 @@ public class UserController {
 			}
 		}
 		model.addAttribute("reserveList", reserveList);
-
+		System.out.println(reserveList);
 		model.addAttribute("att", "mypage");
 		// System.out.println(userService.myPage(userId).toString());
 		
 		//마이페이지 내 후기 리스트
 		model.addAttribute("reviewList", userService.getMypageReview(userId));
+		
 		
 		return "users/userMypage";
 	}

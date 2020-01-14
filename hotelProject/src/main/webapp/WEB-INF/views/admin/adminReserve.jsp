@@ -132,6 +132,7 @@
 			                                    <th>예약자명</th>
 			                                    <th>객실 정보</th>
 			                                    <th>침대 정보</th>
+			                                    <th>결제일</th>
 			                                    <th>체크인/아웃</th>
 			                                    <th>객실 배정</th>
 			                                </tr>
@@ -294,6 +295,7 @@
     					str +="<td>"+data[i].userId+"</td>";
     					str +="<td>"+data[i].roomType+"</td>";
     					str +="<td>"+data[i].bedType+"</td>";
+    					str +="<td>"+data[i].reserveDate+"</td>";
     					str +="<td>"+data[i].reserveCheckin+"~"+data[i].reserveCheckout+"</td>";
 	    				str +="<td id='tdbbt'><a class='btn btn-info bbt' href='"+data[i].reserveNum+"'>객실 배정</a></td>";
     					str +="</tr>";
