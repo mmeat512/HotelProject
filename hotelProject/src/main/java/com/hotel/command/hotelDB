@@ -112,7 +112,7 @@ create table reserveDelete(
    reserveRequire varchar2(200),
     reservenum varchar2(50),
     reservestate varchar2(50),
-    hotelprice number(10,)
+    hotelprice number(10,0)
 );
 
 create table reserveUser(

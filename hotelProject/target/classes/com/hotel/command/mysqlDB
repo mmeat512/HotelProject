@@ -1,0 +1,163 @@
+create table hotel.hotel(
+    hotelname varchar(100) not null,
+    hotelname2 varchar(100) not null,
+    hotelcontent varchar(2000) not null,
+    hotelloca varchar(100)  not null,
+    hotelpeople int  not null,
+    hotelsize int  not null,
+    hotelbed varchar(50) not null, 
+    hotelview varchar(50) not null,
+    hotelcheckin varchar(100) not null,
+    hotelcheckout varchar(100) not null,
+    hotelPrice int not null,
+    hotelfileloca varchar(50) not null,
+    hotelfilename varchar(50) not null,
+    hotelfilerealname varchar(50) not null,
+    hotelfileuploadpath varchar(100) not null
+);
+select * from hotel;
+
+create table hotel.specialintro (
+    specialfileloca varchar(50) not null,
+    specialfilename varchar(50) not null,
+    specialfilerealname varchar(50) not null,
+    specialfileuploadpath varchar(100) not null,
+    specialname varchar(100) not null,
+    specialcontent varchar(2000) not null
+);
+
+create table hotel.users(
+    userid varchar(50) not null,
+    userpw varchar(50) not null,
+    username varchar(50) not null,
+    userengname varchar(50) ,
+    useraddrzipnum varchar(50) ,
+    useraddrbasic varchar(300) ,
+    useraddrdetail varchar(300) ,
+    userphone1 varchar(50) not null,
+    userphone2 varchar(50) not null,
+    userphone3 varchar(50) not null,
+    useremail1 varchar(50) not null,
+    useremail2 varchar(50) not null,
+    userbirth1 int,
+    userbirth2 int,
+    userbirth3 int, 
+	primary key(userid)
+);
+
+create table hotel.reviewboard(
+    reviewbno int not null,
+    reviewdatetime datetime DEFAULT CURRENT_TIMESTAMP ,
+    reviewupdatetimedatetime datetime DEFAULT CURRENT_TIMESTAMP,
+    reviewtitle varchar(50) not null,
+    reviewcontent varchar(2000) not null,
+    reviewid varchar(50) not null,
+    reviewrate int not null,
+    reviewfilename varchar(50),
+    reviewfilerealname varchar(50),
+    reviewfileloca varchar(50),
+    reviewfileuploadpath varchar(100),
+    reviewroom varchar(100),
+    likehit int DEFAULT 0 not null
+);
+
+create table hotel.qnaboard(
+    qnabno int not null,
+    qnaId varchar(50),
+    qnadatetime datetime DEFAULT CURRENT_TIMESTAMP,
+    qnatitle varchar(50) not null,
+    qnacontent varchar(2000) not null,
+    qnatype varchar(20) not null,
+    qnaboardpw varchar(10),
+    qnawriter varchar(20) not null,
+    qnaEngName varchar(50) not null,
+    qnaEmail1 varchar(50) not null,
+    qnaEmail2 varchar(50) not null,
+    qnaPhone1 varchar(50) not null,
+    qnaPhone2 varchar(50) not null,
+    qnaPhone3 varchar(50) not null,
+    reservenum varchar(20),
+    qnanswer varchar(20),
+    qnasecret varchar(20) not null,
+    primary key(qnabno)
+);
+
+
+create table hotel.qnareply(
+    qrbno int not null,
+    qrnum int not null,
+    qrdatetime datetime default CURRENT_TIMESTAMP,
+    qrid varchar(20) not null,
+    qrcontent varchar(1000) not null,
+    primary key(qrnum)
+
+);
+
+create table hotel.reviewreply(
+    rbno int not null,
+    rnum int not null,
+    rdatetime datetime default CURRENT_TIMESTAMP,
+    rcontent varchar(1000) not null,
+    rid varchar(20),
+    primary key(rnum)
+);
+
+create table hotel.reserveDelete(
+    roomnum int not null,
+    roomtype varchar(50) not null,
+    bedtype varchar(50) not null,
+    reservedatetime varchar(50) not null,
+    deletedatetime datetime default CURRENT_TIMESTAMP not null,
+    reservecheckin varchar(50) not null,
+    reservecheckout varchar(50) not null,
+    userid varchar(50) not null,
+    reserveAdult int,
+    reserveKid int,
+   reserveBaby int,
+   reserveRequire varchar(200),
+    reservenum varchar(50),
+    reservestate varchar(50),
+    hotelprice int
+);
+
+create table hotel.reserveUser(
+    reservenum varchar(50) not null,
+    reservename varchar(50) not null,
+    reserveemail1 varchar(50) not null,
+    reserveemail2 varchar(50) not null,
+    reservephone1 varchar(50)not null,
+    reservephone2 varchar(50)not null,
+    reservephone3 varchar(50)not null
+);
+
+create table hotel.reserve(
+    roomnum int,
+    roomtype varchar(50) not null,
+    bedtype varchar(50) not null,
+    staydatetime varchar(50) not null,
+    reservedatetime datetime default CURRENT_TIMESTAMP not null,
+    reservecheckin varchar(50) not null,
+    reservecheckout varchar(50) not null,
+    userid varchar(50) not null,
+    reserveAdult int,
+    reserveKid int,
+    reserveBaby int,
+    reserveRequire varchar(200),
+    reservestate varchar(50),
+    reservenum varchar(50)
+);
+
+create table hotel.room(
+    roomnum int not null,
+    roomtype varchar(50) not null,
+    bedtype varchar(50) not null,
+    peoplecnt int not null,
+    roomname varchar(50),
+    primary key(roomnum)
+);
+
+CREATE table hotel.boardlike(
+    reviewbno int not null ,
+    likehit int DEFAULT 0 not null,
+    hitid VARCHAR(50) not null
+);
