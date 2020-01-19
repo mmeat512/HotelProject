@@ -372,7 +372,7 @@
                                  str += "</li>";
                                  str += "</ul>";
                                  str += "</div>";
-                            str += searchDetail(data,i);
+                          		 str += searchDetail(data,i);
                                 str += "</div>";
                          } 
                        }
@@ -411,7 +411,7 @@
                           for(var i = 0 ; i < data.length; i++){
                              arr[i] = data[i].hotelName2;
                              arr = uniqArr(arr);
-                             console.log(arr[2]);
+                             console.log("왜안나와:"+arr[i]);
                             if(data[i].hotelName2 == arr[i]){
                                var lastIndex = data[i].hotelName.lastIndexOf(" ");
                                var index = data[i].hotelName.indexOf(" ");
@@ -475,6 +475,8 @@
                        if (flg) {chk.push(arr[i]);}
                    }
                }
+              
+               console.log("중복:"+chk);
                return chk;
            }
  

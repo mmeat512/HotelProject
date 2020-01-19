@@ -439,8 +439,7 @@
     		$("#reservePhone2").html(data.reservePhone2);
     		$("#reservePhone3").html(data.reservePhone3);
     		$("#reserveEmail1").html(data.reserveEmail1);
-    		$("#reserveEmail2").html(data.reserveEmail2);
-    			
+    		$("#reserveEmail2").html(data.reserveEmail2);	
     	}		
     	)
     });
@@ -452,8 +451,6 @@
 				deleteReserve();    	
     		}
     })
-    
-    
 	/* reserve DB에서 데이터 삭제 */
    function deleteReserve(){
     	var reserveNum = $("#reserveNum").val();

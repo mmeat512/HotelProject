@@ -13,18 +13,16 @@
 			insert into reserveUser values (#{reserveNum},#{reserveName},#{reserveEmail1},#{reserveEmail2},#{reservePhone1},#{reservePhone2},#{reservePhone3})
 		</insert>
 		
-    <select id="reserveSearch" resultType="HotelVO">
+     <select id="reserveSearch" resultType="HotelVO">
          <![CDATA[
          select DISTINCT a.*,b.*
              FROM hotel a 
              left outer join (select distinct roomtype, bedtype, peoplecnt,roomname 
-                            from (select distinct roomtype,bedtype,peoplecnt,roomname 
-                               from(select * 
-                                  from room 
-                                     where roomnum not in (select DISTINCT roomnum 
-                                                       from reserve 
-                                                          where (staydate >= #{reserveCheckin} and staydate <= #{reserveCheckout}) and 
-         reserve.reservecheckout != #{reserveCheckin} and reserve.reservecheckin != #{reserveCheckout}) order by roomnum asc))) b on a.hotelname = b.roomname 
+             from (select distinct roomtype,bedtype,peoplecnt,roomname 
+             from(select * from room where roomnum not in (select DISTINCT roomnum 
+             from reserve where (staydate >= #{reserveCheckin} and staydate <= #{reserveCheckout}) and 
+        	 reserve.reservecheckout != #{reserveCheckin} and reserve.reservecheckin != #{reserveCheckout})
+        	  order by roomnum asc))) b on a.hotelname = b.roomname 
          ]]>
       </select>
       

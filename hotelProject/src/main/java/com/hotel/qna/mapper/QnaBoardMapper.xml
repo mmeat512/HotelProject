@@ -24,7 +24,7 @@
 			<if test="searchType == 'title'">qnatitle like'%'||#{searchName}||'%'</if>
 			<if test="searchType == 'content'">qnacontent like'%'||#{searchName}||'%'</if>
 			<if test="searchType == 'writer'">qnawriter like'%'||#{searchName}||'%'</if>
-			<if test="searchType == 'titcon'">qnatitle like'%'||#{searchName}||'%' 
+			<if test="searchType == 'titcont'">qnatitle like'%'||#{searchName}||'%' 
 			or qnacontent like '%'||#{searchName}||'%' </if>
 			<if test="searchType == '' or searchType == null">1=1</if>
 			<![CDATA[order by qnabno desc))where rn > (#{pageNum}-1)*#{amount} and rn <= #{pageNum}*#{amount}]]>
@@ -36,7 +36,7 @@
 		
 		<update id="qnaUpdate">
 			update qnaboard set qnaTitle=#{qnaTitle}, qnaType=#{qnaType}, qnaBoardPw=#{qnaBoardPw}, qnaWriter=#{qnaWriter}, qnaengName=#{qnaengName}, qnaemail1=#{qnaemail1}
-			, qnaemail2=#{qnaemail2}, qnaphone1=#{qnaphone1}, qnaphone2=#{qnaphone2}, qnaphone3=#{qnaphone3},reserveNum=#{reserveNum} where qnaBno=#{qnaBno}
+			, qnaemail2=#{qnaemail2}, qnaphone1=#{qnaphone1}, qnaphone2=#{qnaphone2}, qnaphone3=#{qnaphone3},reserveNum=#{reserveNum},qnacontent=#{qnaContent} where qnaBno=#{qnaBno}
 		</update>
 		
 		<delete id="qnaDelete">
@@ -51,7 +51,7 @@
 			<if test="searchType == 'title'">qnatitle like'%'||#{searchName}||'%'</if>
 			<if test="searchType == 'content'">qnacontent like'%'||#{searchName}||'%'</if>
 			<if test="searchType == 'writer'">qnawriter like'%'||#{searchName}||'%'</if>
-			<if test="searchType == 'titcon'">qnatitle like'%'||#{searchName}||'%' 
+			<if test="searchType == 'titcont'">qnatitle like'%'||#{searchName}||'%' 
 			or qnacontent like '%'||#{searchName}||'%' </if>
 			<if test="searchType == '' or searchType == null">1=1</if>
 		</select>

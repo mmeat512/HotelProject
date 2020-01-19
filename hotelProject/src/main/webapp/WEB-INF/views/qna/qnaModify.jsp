@@ -43,12 +43,12 @@
                               <th class="col-xs-3"><b>*</b> 질문 유형</th>
                               <td class="col-xs-9">
                                   <select id="qtype" name="qnaType">
-                                      <option ${vo.qnaType eq '1' ? 'selected':'' }>객실문의</option>
-                                      <option ${vo.qnaType eq '2' ? 'selected':'' }>멤버쉽문의</option>
-                                      <option ${vo.qnaType eq '3' ? 'selected':'' }>예약번호</option>
-                                      <option ${vo.qnaType eq '4' ? 'selected':'' }>홈페이지 오류</option>
-                                      <option ${vo.qnaType eq '5' ? 'selected':'' }>컴플레인</option>
-                                      <option ${vo.qnaType eq '6' ? 'selected':'' }>기타</option>
+                                      <option ${vo.qnaType eq '1' ? 'selected':'' } value='1'>객실문의</option>
+                                      <option ${vo.qnaType eq '2' ? 'selected':'' } value='2'>멤버쉽문의</option>
+                                      <option ${vo.qnaType eq '3' ? 'selected':'' } value='3'>예약번호</option>
+                                      <option ${vo.qnaType eq '4' ? 'selected':'' } value='4'>홈페이지 오류</option>
+                                      <option ${vo.qnaType eq '5' ? 'selected':'' }	value='5'>컴플레인</option>
+                                      <option ${vo.qnaType eq '6' ? 'selected':'' }	value='6'>기타</option>
                                   </select>
                               </td>
                           </tr>
@@ -157,7 +157,6 @@
 	
 	/* 수정 버튼 눌렀을 때 검사  */
 	var kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; //한글 검사
-	var eng = /^[a-zA-Z]*$/; //영문 검사
 	var num = /^[0-9]{4}$/; //숫자 검사
 	$("#qnaUpdateBtn")
 			.click(
@@ -180,10 +179,7 @@
 						} else if ($("#engName").val() == '') {
 							alert("성명(영문)은 필수사항입니다");
 							$("#engName").focus();
-						} else if (eng.test($("#engName").val()) == false) {
-							alert("영문 성명은 영어로 입력하시기 바랍니다");
-							$("#engName").focus();
-						} else if ($("#email1").val() == '') {
+						}else if ($("#email1").val() == '') {
 							alert("이메일은 필수사항입니다");
 							$("#email1").focus();
 						} else if ($("#email2").val() == '') {

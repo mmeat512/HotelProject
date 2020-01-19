@@ -165,7 +165,7 @@
 					<!-- 수정폼 id값을 확인하세요-->
 					<div class="reply-content">
 						<textarea class="form-control" rows="4" id="modalReply"
-							placeholder="내용입력"></textarea>
+							></textarea>
 						<div class="reply-group">
 							<div class="reply-input">
 								<input type="hidden" id="modalRno"> <input
